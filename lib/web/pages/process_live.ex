@@ -3,7 +3,7 @@ defmodule Bonfire.Breadpub.ProcessLive do
 
   use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
 
-  alias Bonfire.Breadpub.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
+  alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
   alias Bonfire.Web.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.Me.Web.{CreateUserLive, LoggedDashboardLive}

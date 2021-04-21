@@ -4,7 +4,7 @@ defmodule Bonfire.Breadpub.BreadDashboardLive do
   use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
 
   alias Bonfire.UI.Social.{HashtagsLive, ParticipantsLive}
-  alias Bonfire.Breadpub.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
+  alias Bonfire.UI.ValueFlows.{IntentCreateActivityLive, CreateMilestoneLive, ProposalFeedLive, FiltersLive}
   alias Bonfire.Web.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.Me.Web.{CreateUserLive, LoggedDashboardLive}
