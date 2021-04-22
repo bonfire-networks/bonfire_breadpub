@@ -3,7 +3,7 @@ defmodule Bonfire.Breadpub.Routes do
 
     quote do
 
-      alias Bonfire.Breadpub.Routes.Helpers, as: SocialRoutes
+      alias Bonfire.Breadpub.Routes.Helpers, as: BreadRoutes
 
 
       pipeline :bread_pub do
