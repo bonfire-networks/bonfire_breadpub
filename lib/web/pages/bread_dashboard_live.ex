@@ -20,7 +20,7 @@ defmodule Bonfire.Breadpub.BreadDashboardLive do
   end
 
   defp mounted(params, session, socket) do
-    intents = all_intents(socket)
+    intents = intents(socket)
     IO.inspect(intents)
 
     {:ok, socket
@@ -55,7 +55,6 @@ defmodule Bonfire.Breadpub.BreadDashboardLive do
     }
   """
   def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
-  def all_intents(socket), do: intents(socket)
 
 
 end
