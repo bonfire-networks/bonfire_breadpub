@@ -3,9 +3,6 @@ defmodule Bonfire.Breadpub.Routes do
 
     quote do
 
-      alias Bonfire.Breadpub.Routes.Helpers, as: BreadRoutes
-
-
       pipeline :bread_pub do
         plug :put_root_layout, {Bonfire.Breadpub.LayoutView, :root}
       end
