@@ -33,8 +33,8 @@ defmodule ValueFlows.Web.MemberLive.MemberAdsLive do
     {:ok, ads} =
       ValueFlows.Planning.Intent.GraphQL.fetch_provider_intents_edge(
         page_opts,
-        %{context: %{current_user: assigns.current_user}},
-        assigns.current_user.id
+        %{context: %{current_user: e(assigns, :current_user, nil)}},
+        e(assigns, :current_user, nil).id
       )
 
     #IO.inspect(ads, label: "ADS:")
@@ -44,7 +44,6 @@ defmodule ValueFlows.Web.MemberLive.MemberAdsLive do
       has_next_page: ads.page_info.has_next_page,
       after: ads.page_info.end_cursor,
       before: ads.page_info.start_cursor,
-      current_user: assigns.current_user
     )
   end
 
