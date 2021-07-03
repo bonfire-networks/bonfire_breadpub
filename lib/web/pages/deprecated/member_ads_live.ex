@@ -47,6 +47,6 @@ defmodule ValueFlows.Web.MemberLive.MemberAdsLive do
     )
   end
 
-  def handle_event("load-more", _, socket),
-    do: CommonsPub.Utils.Web.CommonHelper.paginate_next(&fetch/2, socket)
+  # def handle_event("load-more", _, socket),
+  #   do: paginate_next(&fetch/2, socket)
 end
