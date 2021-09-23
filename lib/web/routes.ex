@@ -1,11 +1,11 @@
 defmodule Bonfire.Breadpub.Routes do
   defmacro __using__(_) do
 
+
+    
     quote do
 
-      pipeline :bread_pub do
-        plug :put_root_layout, {Bonfire.Breadpub.LayoutView, :root}
-      end
+
 
 
       # pages anyone can view
@@ -25,14 +25,14 @@ defmodule Bonfire.Breadpub.Routes do
       scope "/bread", Bonfire.Breadpub do
         pipe_through :browser
         pipe_through :user_required
-        pipe_through :bread_pub
 
         live "/", BreadDashboardLive
-        live "/lists", ProcessesLive
-        live "/list/:milestone_id", ProcessLive
+        # live "/lists", ProcessesLive
+        # live "/list/:milestone_id", ProcessLive
+        live "/create-intent", CreateIntentLive
         live "/intent/:intent_id", ProposalLive
-        live "/proposal/:proposal_id", ProposalLive
-        live "/proposed_intent/:proposed_intent_id", ProposalLive
+        # live "/proposal/:proposal_id", ProposalLive
+        # live "/proposed_intent/:proposed_intent_id", ProposalLive
 
         live "/map/", MapLive
         live "/map/:id", MapLive
