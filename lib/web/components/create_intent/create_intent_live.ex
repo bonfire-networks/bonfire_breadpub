@@ -1,4 +1,4 @@
-defmodule Bonfire.UI.BreadPub.CreateIntentLive do
+defmodule Bonfire.UI.Breadpub.CreateIntentLive do
   use Bonfire.Web, :stateless_component
 
   prop intent_url, :string, required: false, default: ""

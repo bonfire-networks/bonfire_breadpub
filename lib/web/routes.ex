@@ -7,7 +7,6 @@ defmodule Bonfire.Breadpub.Routes do
 
 
 
-
       # pages anyone can view
       scope "/bread", Bonfire.Breadpub do
         pipe_through :browser
@@ -26,16 +25,18 @@ defmodule Bonfire.Breadpub.Routes do
         pipe_through :browser
         pipe_through :user_required
 
-        live "/", BreadDashboardLive
+        live "/", HomeLive
+        live "/:tab", HomeLive
         # live "/lists", ProcessesLive
         # live "/list/:milestone_id", ProcessLive
-        live "/create-intent", CreateIntentLive
-        live "/intent/:intent_id", ProposalLive
+        # live "/create-intent", CreateIntentLive
+        # live "/discover", DiscoverLive
+        # live "/intent/:intent_id", ProposalLive
         # live "/proposal/:proposal_id", ProposalLive
         # live "/proposed_intent/:proposed_intent_id", ProposalLive
 
-        live "/map/", MapLive
-        live "/map/:id", MapLive
+        # live "/map/", MapLive
+        # live "/map/:id", MapLive
 
       end
     end

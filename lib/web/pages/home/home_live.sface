@@ -1,0 +1,17 @@
+<main class="flex flex-col items-center mx-auto mt-8">
+  <Bonfire.UI.Breadpub.MainNavigationLive page={@selected_tab} />
+  {#case @selected_tab}
+    {#match "publish"}
+    <Bonfire.UI.Breadpub.CreateIntentLive />
+    {#match "discover"}
+    <Bonfire.UI.Breadpub.DiscoverLive />
+    {#match "my-needs"}
+    <Bonfire.UI.Breadpub.MyNeedsLive />
+    {#match "my-offers"}
+    <Bonfire.UI.Breadpub.MyOffersLive />
+    {#match "bookmarked"}
+    <Bonfire.UI.Breadpub.BookmarkedLive />
+    {#match _}
+    <Bonfire.UI.Breadpub.CreateIntentLive />
+  {/case}
+</main>
