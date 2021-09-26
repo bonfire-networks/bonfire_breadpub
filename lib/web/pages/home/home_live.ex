@@ -21,11 +21,13 @@ defmodule Bonfire.Breadpub.HomeLive do
   end
 
   defp mounted(params, session, socket) do
-
     {:ok, socket
     |> assign(
       page_title: "Create a new intent",
-      page: "publish"
+      page: "publish",
+      action_id: "work",
+      intent_type: "need",
+      intent_url: "/bread/intent/"
     )}
   end
 
@@ -42,28 +44,36 @@ defmodule Bonfire.Breadpub.HomeLive do
 
   def do_handle_params(%{"tab" => "discover" = tab} = _params, _url, socket) do
     current_user = current_user(socket)
+    intents = intents(socket)
+    IO.inspect(intents)
 
-    {:noreply,
+    {:noreply,  
      assign(socket,
-       selected_tab: tab,
+        selected_tab: tab,
+        intents: intents
      )}
   end
 
   def do_handle_params(%{"tab" => "my-needs" = tab} = _params, _url, socket) do
     current_user = current_user(socket)
+    intents = intents(%{receiver: "me"}, socket)
+    IO.inspect(intents)
 
     {:noreply,
      assign(socket,
        selected_tab: tab,
+       intents: intents
      )}
   end
 
   def do_handle_params(%{"tab" => "my-offers" = tab} = _params, _url, socket) do
     current_user = current_user(socket)
-
+    intents = intents(%{provider: "me"}, socket)
+    IO.inspect(intents)
     {:noreply,
      assign(socket,
        selected_tab: tab,
+       intents: intents
      )}
   end
 
@@ -102,4 +112,45 @@ defmodule Bonfire.Breadpub.HomeLive do
     end)
   end
 
+
+
+  @graphql """
+  query($provider: ID, $receiver: ID) {
+    intents(
+      filter:{
+        provider: $provider, 
+        receiver: $receiver, 
+        status: "open"
+      }, 
+      limit: 200
+    ) {
+        id
+        name
+        hasPointInTime
+        note
+        provider {
+          name
+          id
+        }
+        receiver {
+          name
+          id
+        }
+      }
+  }
+  """
+  def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
+
+
+
+  def handle_event("toggle_intent_type", %{"id" => id}, socket) do
+    IO.inspect(id)
+    {:noreply, 
+      socket |> assign(intent_type: id)}
+    end
+
+    # defdelegate handle_params(params, attrs, socket), to: Bonfire.Common.LiveHandlers
+
+    def handle_event(action, attrs, socket), do: Bonfire.Common.LiveHandlers.handle_event(action, attrs, socket, __MODULE__)
+    def handle_info(info, socket), do: Bonfire.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end

@@ -1,0 +1,68 @@
+<div class="flex flex-col">
+  <div class="mt-8">
+    <a
+      class="flex items-center space-x-2"
+      aria-label="Navigate to the previous page"
+      href="javascript:window.history.back()">
+      <span class="flex items-center w-8 h-8 rounded-full place-content-center bg-blueGray-200 dark:bg-gray-600 hover:bg-blueGray-300">
+        <svg class="w-4 h-4 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      </span>
+      <span class="text-sm font-medium text-gray-300">{l "Back"}</span>
+    </a>
+    </div>
+  <main class="flex flex-col items-center mx-auto mt-4">
+    <section class="p-3 mb-4 bg-white rounded-lg shadow dark:bg-blueGray-700 w-center">
+      <div class="flex space-x-3 items-top ">
+        <div class="flex-1">
+          <h3 class="text-lg text-gray-200 font-regular">{e(@intent, :name, nil)}</h3>
+          <div class="flex items-center">
+          <div class="flex items-center my-2 space-x-2">
+            <span class="w-4 h-4 bg-pink-300 rounded-full"></span>
+            {#if e(@intent, :provider, nil) != nil}
+              <LiveRedirect to={"/user/#{e(@intent, :provider, :id, nil)}"}>
+              <span class="text-xs tracking-wide text-gray-300 hover:underline font-regular">{e(@intent, :provider, :name, nil)}</span>
+              </LiveRedirect>
+            {#else}
+              <LiveRedirect to={"/user/#{e(@intent, :receiver, :id, nil)}"}>
+              <span class="text-xs tracking-wide text-gray-300 hover:underline font-regular">{e(@intent, :receiver, :name, nil)}</span>
+              </LiveRedirect>
+            {/if}      
+          </div>
+          <span class="ml-1 text-xs tracking-wide text-gray-400 font-regular">- 4 hours ago</span>
+          </div>
+          <div class="prose-sm prose text-gray-300">{e(@intent, :note, nil)}</div>
+        </div>
+        <div class="flex items-start space-x-2">
+          {#if e(@intent, :provider, nil) != nil}
+          <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-gray-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
+            {l "offer"}
+          </span>
+          {#else}
+          <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-gray-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
+            {l "need"}
+          </span>
+          {/if}
+          <div class="mt-1">
+          <Bonfire.UI.Social.LikeActionWithoutLabelLive
+            object_id={@intent.id}
+            current_user={current_user(assigns)}
+            />
+          </div>
+        </div>
+      </div>
+      <div class="flex mt-2 space-x-4">
+        <div class="text-xs font-medium tracking-wide text-gray-400">2 Replies</div>
+        <div class="text-xs font-medium tracking-wide text-gray-400">54 Likes</div>
+        <div class="text-xs font-medium tracking-wide text-gray-400">4 Boosts</div>
+      </div>
+      <div class="mt-6 -m-3">
+        {live_component(@socket,
+          Bonfire.UI.Social.ThreadLive,
+          id: e(@intent, :id, ""),
+          thread_id: e(@intent, :id, ""),
+          smart_input_placeholder: "Post a comment..."
+          )}
+      </div>
+    </section>
+  </main>
+</div>

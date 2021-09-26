@@ -1,6 +1,12 @@
 <div class="flex flex-col space-y-2 w-center">
-  <Bonfire.UI.Breadpub.IntentLive />
-  <Bonfire.UI.Breadpub.IntentLive />
-  <Bonfire.UI.Breadpub.IntentLive />
-  <Bonfire.UI.Breadpub.IntentLive />
+ {#for intent <- @intents}
+      <Bonfire.UI.Breadpub.IntentLive
+        key={e(intent, :id)}
+        name={e(intent, :name, nil)}
+        note={e(intent, :note, nil)}
+        intent={intent}
+       />
+    {#else}
+      No items
+    {/for}
 </div>

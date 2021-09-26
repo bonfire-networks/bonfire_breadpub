@@ -23,6 +23,7 @@ defmodule Bonfire.Breadpub.Routes do
 
         live "/", HomeLive
         live "/:tab", HomeLive
+        live "/intent/:id", IntentLive
         # live "/lists", ProcessesLive
         # live "/list/:milestone_id", ProcessLive
         # live "/create-intent", CreateIntentLive

@@ -1,22 +1,33 @@
 <section class="bg-white rounded-lg shadow dark:bg-gray-700 w-center">
   <div class="mx-4 bg-white border-gray-100 rounded-lg dark:bg-gray-700 dark:border-gray-600 lg:mx-0">
     <div class="grid h-12 grid-cols-2 p-1 m-2 rounded-lg shadow-inner w-80 bg-blueGray-800">
-      <div class="flex items-center justify-center px-4 text-sm font-medium text-center text-gray-100 border rounded-md text-secondary hover:text-high-emphesis text-high-emphesis border-blueGray-800 bg-gradient-to-r from-purple-600 to-pink-400 hover:from-blue hover:to-pink">I need</div>
-      <div class="flex items-center justify-center px-4 text-sm font-medium text-center text-gray-400 rounded-md text-secondary hover:text-high-emphesis">I offer</div>
+      <div phx-value-id="need" phx-click="toggle_intent_type" class={"cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-gray-400 rounded-md", "text-gray-100 border-blueGray-800 bg-gradient-to-r from-purple-600 to-pink-400 hover:from-blue hover:to-pink": @intent_type == "need" }>I need</div>
+      <div phx-value-id="offer" phx-click="toggle_intent_type" class={"cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-gray-400 rounded-md", "text-gray-100 border-blueGray-800 bg-gradient-to-r from-purple-600 to-pink-400 hover:from-blue hover:to-pink": @intent_type == "offer"}>I offer</div>
     </div>
     <!-- Create a form -->
-    <form class="flex flex-col w-full p-2 space-y-4" method="POST" action="{{ @page.path }}">
+    <Form
+      class="flex flex-col w-full p-2 space-y-4"
+      for={e(assigns, :globals, ValueFlows.Planning.Intent, :changeset, ValueFlows.Planning.Intent.LiveHandler.changeset() )}
+      opts={autocomplete: "off"}
+      submit="ValueFlows.Planning.Intent:create">
+      <HiddenInput :if={e(assigns, :intent_url, nil)} name="redirect_after" value={@intent_url} />
+      <HiddenInput :if={e(assigns, :action_id, nil)} name="action_id" value={@action_id} />
+      <HiddenInput :if={e(assigns, :intent_type, nil) == "need"} name="receiver" value={e(assigns, :current_user, :id, nil)} />
+      <HiddenInput :if={e(assigns, :intent_type, nil) == "offer"} name="provider" value={e(assigns, :current_user, :id, nil)} />
       <!-- Create a title input form field -->
-      <div class="w-full p-2 rounded-lg shadow-inner bg-blueGray-600">
-        <label class="block text-sm text-gray-300 font-regular">Add a title</label>
-        <input class="block w-full border-gray-600 rounded-md bg-blueGray-600 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="text" />
-      </div>
-
-      <div class="w-full p-2 rounded-lg shadow-inner bg-blueGray-600">
-        <label class="block text-sm text-gray-300 font-regular">Add a description</label>
-        <textarea class="block w-full border border-gray-600 rounded-md bg-blueGray-600 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
-      </div>
-      <button class="flex items-center justify-center w-full p-4 text-sm font-medium text-center text-gray-100 border rounded-lg text-secondary hover:text-high-emphesis text-high-emphesis border-blueGray-800 bg-gradient-to-r from-purple-600 to-pink-400 hover:from-blue hover:to-pink">Publish</button>
-      </form>
+      <Field 
+        class="w-full p-2 m-0 rounded-lg shadow-inner bg-blueGray-600"
+        name={:name}>
+        <Label class="block text-sm text-gray-300 font-regular">{l "Add a title"}</Label>
+        <TextInput class="block w-full text-gray-100 border-gray-600 rounded-md bg-blueGray-600 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+      </Field>
+      <Field 
+        name={:note}
+        class="w-full p-2 rounded-lg shadow-inner bg-blueGray-600">
+        <Label class="block text-sm text-gray-300 font-regular">{l "Write an optional description"}</Label>
+        <TextArea class="block w-full text-gray-100 border border-gray-600 rounded-md bg-blueGray-600 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></TextArea>
+      </Field>
+      <button type="submit" class="flex items-center justify-center w-full p-4 text-sm font-medium text-center text-gray-100 border rounded-lg text-secondary hover:text-high-emphesis text-high-emphesis border-blueGray-800 bg-gradient-to-r from-purple-600 to-pink-400 hover:from-blue hover:to-pink">{l "Publish"}</button>
+    </Form>
   </div>
 </section>

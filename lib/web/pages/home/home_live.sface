@@ -2,13 +2,18 @@
   <Bonfire.UI.Breadpub.MainNavigationLive page={@selected_tab} />
   {#case @selected_tab}
     {#match "publish"}
-    <Bonfire.UI.Breadpub.CreateIntentLive />
+    <Bonfire.UI.Breadpub.CreateIntentLive 
+      intent_url={@intent_url}
+      action_id={"work"} 
+      intent_type={@intent_type} />
     {#match "discover"}
-    <Bonfire.UI.Breadpub.DiscoverLive />
+    <Bonfire.UI.Breadpub.DiscoverLive
+      intents={@intents}
+    />
     {#match "my-needs"}
-    <Bonfire.UI.Breadpub.MyNeedsLive />
+    <Bonfire.UI.Breadpub.MyNeedsLive  intents={@intents} />
     {#match "my-offers"}
-    <Bonfire.UI.Breadpub.MyOffersLive />
+    <Bonfire.UI.Breadpub.MyOffersLive  intents={@intents} />
     {#match "bookmarked"}
     <Bonfire.UI.Breadpub.BookmarkedLive />
     {#match _}
