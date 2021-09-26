@@ -1,11 +1,7 @@
 defmodule Bonfire.Breadpub.Routes do
   defmacro __using__(_) do
 
-
-    
     quote do
-
-
 
       # pages anyone can view
       scope "/bread", Bonfire.Breadpub do
