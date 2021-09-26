@@ -2,7 +2,13 @@
   
   <section class="bg-white rounded-lg shadow dark:bg-gray-700 w-center">
     <div class="p-3 bg-purple-600 rounded-lg">
-      Map
+      <div class="hidden p-2 sm:block">
+        <nav class="flex space-x-4" aria-label="Tabs">
+          <LivePatch  to={"/bread/discover"} class={"px-3 py-2 flex-1 text-sm text-gray-200 rounded-md font-regular"}><span class="block w-full text-center">{l "My feed"}</span></LivePatch>
+          <LivePatch  to={"/bread/discover/local"} class={"px-3 py-2 flex-1 text-sm text-gray-200 rounded-md font-regular"}><span class="block w-full text-center">{l "Local"}</span></LivePatch>
+          <LivePatch  to={"/bread/discover/federated"} class={"px-3 py-2 flex-1 text-sm text-gray-200 rounded-md font-regular"}><span class="block w-full text-center">{l "Federated"}</span></LivePatch>
+        </nav>
+      </div>
     </div>
   </section>
 
