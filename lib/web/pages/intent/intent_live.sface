@@ -19,12 +19,12 @@
           <div class="flex items-center my-2 space-x-2">
             <span class="w-4 h-4 bg-pink-300 rounded-full"></span>
             {#if e(@intent, :provider, nil) != nil}
-              <LiveRedirect to={"/user/#{e(@intent, :provider, :id, nil)}"}>
-              <span class="text-xs tracking-wide text-gray-300 hover:underline font-regular">{e(@intent, :provider, :name, nil)}</span>
+              <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={"/user/#{e(@intent, :provider, :id, nil)}"}>
+                {e(@intent, :provider, :name, nil)}
               </LiveRedirect>
             {#else}
-              <LiveRedirect to={"/user/#{e(@intent, :receiver, :id, nil)}"}>
-              <span class="text-xs tracking-wide text-gray-300 hover:underline font-regular">{e(@intent, :receiver, :name, nil)}</span>
+              <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={"/user/#{e(@intent, :receiver, :id, nil)}"}>
+              { e(@intent, :receiver, :name, nil)}
               </LiveRedirect>
             {/if}      
           </div>
