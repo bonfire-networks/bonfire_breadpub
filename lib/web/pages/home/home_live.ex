@@ -1,4 +1,4 @@
-defmodule Bonfire.Breadpub.HomeLive do
+defmodule Bonfire.Breadpub.Web.HomeLive do
   use Bonfire.Web, {:surface_view, [layout: {Bonfire.UI.Social.Web.LayoutView, "without_sidebar.html"}]}
 
   use AbsintheClient, schema: Bonfire.GraphQL.Schema, action: [mode: :internal]
@@ -27,7 +27,7 @@ defmodule Bonfire.Breadpub.HomeLive do
       page: "publish",
       action_id: "work",
       intent_type: "need",
-      intent_url: "/bread/intent/"
+      intent_url: "/breadpub/intent/"
     )}
   end
 
@@ -47,7 +47,7 @@ defmodule Bonfire.Breadpub.HomeLive do
     intents = intents(socket)
     IO.inspect(intents)
 
-    {:noreply,  
+    {:noreply,
      assign(socket,
         selected_tab: tab,
         intents: intents
@@ -77,7 +77,7 @@ defmodule Bonfire.Breadpub.HomeLive do
      )}
   end
 
-  
+
   def do_handle_params(%{"tab" => "bookmarked" = tab} = _params, _url, socket) do
     current_user = current_user(socket)
 
@@ -86,7 +86,7 @@ defmodule Bonfire.Breadpub.HomeLive do
        selected_tab: tab,
      )}
   end
-  
+
 
   def do_handle_params(%{"tab" => tab} = _params, _url, socket) do
 
@@ -118,10 +118,10 @@ defmodule Bonfire.Breadpub.HomeLive do
   query($provider: ID, $receiver: ID) {
     intents(
       filter:{
-        provider: $provider, 
-        receiver: $receiver, 
+        provider: $provider,
+        receiver: $receiver,
         status: "open"
-      }, 
+      },
       limit: 200
     ) {
         id
@@ -131,10 +131,12 @@ defmodule Bonfire.Breadpub.HomeLive do
         provider {
           name
           id
+          display_username
         }
         receiver {
           name
           id
+          display_username
         }
       }
   }
@@ -145,7 +147,7 @@ defmodule Bonfire.Breadpub.HomeLive do
 
   def handle_event("toggle_intent_type", %{"id" => id}, socket) do
     IO.inspect(id)
-    {:noreply, 
+    {:noreply,
       socket |> assign(intent_type: id)}
     end
 

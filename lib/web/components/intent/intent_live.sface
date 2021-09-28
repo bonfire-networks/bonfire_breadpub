@@ -1,28 +1,28 @@
 <div class="p-3 rounded-lg bg-blueGray-700">
   <div class="flex space-x-3 items-top ">
     <div class="flex-1">
-      <LiveRedirect to={"/bread/intent/#{e(@intent, :id, nil)}"}>
+      <LiveRedirect to={"/breadpub/intent/#{e(@intent, :id, nil)}"}>
         <h3 class="text-base leading-snug text-gray-200 hover:underline font-regular">{@name}</h3>
       </LiveRedirect>
       <div class="flex items-center">
       <div class="flex items-center my-2 space-x-2">
         <span class="w-4 h-4 bg-pink-300 rounded-full"></span>
-        {#if e(@intent, :provider, nil) != nil}
-          <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={"/user/#{e(@intent, :provider, :id, nil)}"}>
-            {e(@intent, :provider, :name, nil)}
+        {#if e(@intent, :provider, nil)}
+          <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={path(e(@intent, :provider, nil))}>
+            {e(@intent, :provider, :name, "Unnamed provider")}
           </LiveRedirect>
         {#else}
-          <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={"/user/#{e(@intent, :receiver, :id, nil)}"}>
-          { e(@intent, :receiver, :name, nil)}
+          <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={path(e(@intent, :receiver, nil))}>
+          { e(@intent, :receiver, :name, "Unnamed receiver")}
           </LiveRedirect>
         {/if}      
       </div>
-      <span class="ml-1 text-xs tracking-wide text-gray-400 font-regular">- 4 hours ago</span>
+      <span class="ml-1 text-xs tracking-wide text-gray-400 font-regular">- {date_from_now(@intent)}</span>
       </div>
       <div class="prose-sm prose text-gray-300">{@note}</div>
     </div>
     <div class="flex items-start space-x-2">
-      {#if e(@intent, :provider, nil) != nil}
+      {#if e(@intent, :provider, nil)}
       <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-gray-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
         {l "offer"}
       </span>
@@ -32,9 +32,10 @@
       </span>
       {/if}
       <div class="mt-1">
-        <Bonfire.UI.Social.LikeActionWithoutLabelLive
-          object_id={@intent.id}
-          current_user={current_user(assigns)}
+        <Bonfire.UI.Social.LikeActionWithoutLabelLive  
+          id={ComponentID.new(Bonfire.UI.Social.LikeActionWithoutLabelLive, e(@intent, :id, nil))} 
+          object_id={e(@intent, :id, nil)}
+          current_user={current_user(assigns) |> IO.inspect} 
           />
         </div>
     </div>

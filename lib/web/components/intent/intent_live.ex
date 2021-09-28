@@ -4,4 +4,5 @@ defmodule Bonfire.UI.Breadpub.IntentLive do
   prop name, :string, default: ""
   prop note, :string, default: ""
   prop intent, :any
+
 end
