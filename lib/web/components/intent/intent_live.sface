@@ -1,48 +1,73 @@
 <div class="p-3 rounded-lg bg-blueGray-700">
   <div class="flex space-x-3 items-top ">
-    <div class="flex-1">
-      <LiveRedirect to={"/breadpub/intent/#{e(@intent, :id, nil)}"}>
-        <h3 class="text-base leading-snug text-gray-200 hover:underline font-regular">{@name}</h3>
-      </LiveRedirect>
-      <div class="flex items-center">
-      <div class="flex items-center my-2 space-x-2">
-        <span class="w-4 h-4 bg-pink-300 rounded-full"></span>
-        {#if e(@intent, :provider, nil)}
-          <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={path(e(@intent, :provider, nil))}>
-            {e(@intent, :provider, :name, "Unnamed provider")}
-          </LiveRedirect>
-        {#else}
-          <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={path(e(@intent, :receiver, nil))}>
-          { e(@intent, :receiver, :name, "Unnamed receiver")}
-          </LiveRedirect>
-        {/if}      
-      </div>
-      <span class="ml-1 text-xs tracking-wide text-gray-400 font-regular">- {date_from_now(@intent)}</span>
-      </div>
-      <div class="prose-sm prose text-gray-300">{@note}</div>
+
+    {#if e(@intent, :provider, nil)}
+    <div class="items-center justify-center px-2 py-1 text-sm font-medium text-center text-gray-100 border-none rounded-md bg-gradient-to-r from-green-600 to-green-400">
+      {l "offer"}
     </div>
-    <div class="flex items-start space-x-2">
+    {#else}
+    <div class="items-center justify-center px-2 py-1 text-sm font-medium text-center text-gray-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
+      {l "need"}
+    </div>
+    {/if}
+
+    <div class="flex-auto">
+    <LiveRedirect to={"/breadpub/intent/#{e(@intent, :id, nil)}"}>
+      <h3 class="text-base leading-snug text-gray-200 hover:underline font-regular">{@name}</h3>
+    </LiveRedirect>
+    </div>
+
+    <!-- <div class="justify-self-end mt-1">
+      <Bonfire.UI.Social.LikeActionWithoutLabelLive  
+      id={ComponentID.new(Bonfire.UI.Social.LikeActionWithoutLabelLive, e(@intent, :id, nil))} 
+      object_id={e(@intent, :id, nil)}
+      current_user={current_user(assigns)} 
+      />
+    </div> -->
+
+    <div class="items-center space-x-2">
+      <span class="w-4 h-4 bg-pink-300 rounded-full"></span>
       {#if e(@intent, :provider, nil)}
-      <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-gray-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
-        {l "offer"}
-      </span>
+        <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={path(e(@intent, :provider, nil))}>
+          {e(@intent, :provider, :name, "Unnamed provider")}
+        </LiveRedirect>
       {#else}
-      <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-gray-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
-        {l "need"}
-      </span>
-      {/if}
-      <div class="mt-1">
-        <Bonfire.UI.Social.LikeActionWithoutLabelLive  
-          id={ComponentID.new(Bonfire.UI.Social.LikeActionWithoutLabelLive, e(@intent, :id, nil))} 
-          object_id={e(@intent, :id, nil)}
-          current_user={current_user(assigns) |> IO.inspect} 
-          />
-        </div>
+        <LiveRedirect class="text-xs tracking-wide text-gray-300 hover:underline font-regular" to={path(e(@intent, :receiver, nil))}>
+        { e(@intent, :receiver, :name, "Unnamed receiver")}
+        </LiveRedirect>
+      {/if}      
+
+      <span class="ml-1 text-xs tracking-wide text-gray-400 font-regular">- {date_from_now(@intent)}</span>
     </div>
+
+
   </div>
-  <div class="flex mt-2 space-x-4">
-    <div class="text-xs font-medium tracking-wide text-gray-400">2 Replies</div>
-    <div class="text-xs font-medium tracking-wide text-gray-400">54 Likes</div>
-    <div class="text-xs font-medium tracking-wide text-gray-400">4 Boosts</div>
+  <div class="flex space-x-3 items-top">
+  
+    <div class="flex-1 mt-3 prose-sm prose text-gray-300">{@note}</div>
+
+
   </div>
+
+  <div class="flex mt-2 space-x-4 justify-end">
+
+    <Bonfire.UI.Social.Activity.ReplyLive 
+      permalink={path(@intent)}
+      />
+    <Bonfire.UI.Social.Activity.BoostActionLive 
+      id={ComponentID.new(Bonfire.UI.Social.Activity.BoostActionLive, e(@intent, :id, ""))} 
+      object_id={e(@intent, :id, "")} 
+      my_boost={e(assigns, :my_boost, nil)}
+      boost_count={e(assigns, :boost_count, nil)}
+      />
+    <Bonfire.UI.Social.LikeActionLive
+      id={ComponentID.new(Bonfire.UI.Social.LikeActionLive, @intent)} 
+      object_id={e(@intent, :id, "")} 
+      my_like={e(assigns, :my_like, nil)}
+      like_count={e(assigns, :like_count, nil)} 
+      label={l "Bookmark"}
+    />
+
+  </div>
+
 </div>

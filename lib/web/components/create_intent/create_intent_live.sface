@@ -2,7 +2,7 @@
   <div class="mx-4 bg-white border-gray-100 rounded-lg dark:bg-gray-700 dark:border-gray-600 lg:mx-0">
     <div class="grid h-12 grid-cols-2 gap-1 p-1 m-2 rounded-lg shadow-inner w-80 bg-blueGray-800">
       <div phx-value-id="need" phx-click="toggle_intent_type" class={"hover:bg-blueGray-700 hover:text-gray-200 cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-gray-400 rounded-md", "text-gray-100 border-blueGray-800 bg-gradient-to-r from-purple-600 to-pink-400 hover:from-blue hover:to-pink": @intent_type == "need" }>I need</div>
-      <div phx-value-id="offer" phx-click="toggle_intent_type" class={"hover:bg-blueGray-700 hover:text-gray-200  cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-gray-400 rounded-md", "text-gray-100 border-blueGray-800 bg-gradient-to-r from-purple-600 to-pink-400 hover:from-blue hover:to-pink": @intent_type == "offer"}>I offer</div>
+      <div phx-value-id="offer" phx-click="toggle_intent_type" class={"hover:bg-blueGray-700 hover:text-gray-200  cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-gray-400 rounded-md", "text-gray-100 border-blueGray-800 bg-gradient-to-r from-green-600 to-green-400 hover:from-blue hover:to-green": @intent_type == "offer"}>I can offer</div>
     </div>
     <!-- Create a form -->
     <Form
@@ -27,7 +27,7 @@
         <Label class="block text-sm text-gray-300 font-regular">{l "Write an optional description"}</Label>
         <TextArea class="block w-full text-gray-100 border border-gray-600 rounded-md bg-blueGray-600 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></TextArea>
       </Field>
-      <button type="submit" class="flex items-center justify-center w-full p-4 text-sm font-medium text-center text-gray-100 border rounded-lg text-secondary hover:text-high-emphesis text-high-emphesis border-blueGray-800 bg-gradient-to-r from-purple-600 to-pink-400 hover:from-blue hover:to-pink">{l "Publish"}</button>
+      <button type="submit" class="flex items-center justify-center w-full p-4 text-sm font-medium text-center text-gray-100 border rounded-lg text-secondary hover:text-high-emphesis text-high-emphesis border-blueGray-800 bg-gradient-to-r from-purple-600 to-green-400 hover:from-blue hover:to-pink">{l "Publish"}</button>
     </Form>
   </div>
 </section>

@@ -81,6 +81,8 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   def do_handle_params(%{"tab" => "bookmarked" = tab} = _params, _url, socket) do
     current_user = current_user(socket)
 
+    # TODO
+
     {:noreply,
      assign(socket,
        selected_tab: tab,
