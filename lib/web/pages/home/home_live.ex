@@ -122,13 +122,14 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
       filter:{
         provider: $provider,
         receiver: $receiver,
-        status: "open"
+        status: "open",
+        classified_as: "#{Bonfire.Breadpub.Integration.remote_tag_id}"
       },
       limit: 200
     ) {
         id
         name
-        hasPointInTime
+        has_point_in_time
         note
         provider {
           name
