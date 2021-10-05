@@ -24,10 +24,16 @@ defmodule Bonfire.Breadpub.IntentLive do
     if !intent || intent == %{intent: nil} do
       {:error, :not_found}
     else
+
+    intent = intent
+    |> Map.put(:is_offer, e(intent, :provider, nil) != nil)
+    |> Map.put(:is_need, e(intent, :receiver, nil) != nil)
+
     {:ok, socket
     |> assign(
       page_title: "Intent",
       intent: intent,
+      matches: ValueFlows.Util.search_for_matches(intent)
     )}
     end
   end
