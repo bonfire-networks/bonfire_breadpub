@@ -1,4 +1,4 @@
-<main class="flex flex-col items-center mx-auto mt-8">
+<main class="flex flex-col items-center mx-auto mt-8 w-full max-w-screen-md">
   <Bonfire.UI.Breadpub.MainNavigationLive page={@selected_tab} />
   {#case @selected_tab}
     {#match "publish"}
