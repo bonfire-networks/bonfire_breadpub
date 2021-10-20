@@ -1,11 +1,20 @@
-<div class="mb-4 bg-white rounded-lg shadow dark:bg-blueGray-700 w-center">
-  <div class="hidden p-2 sm:block">
-    <nav class="flex space-x-4" aria-label="Tabs">
-      <LivePatch  to={"/breadpub/publish"} class={"px-3 py-2 text-sm text-gray-400 rounded-md font-regular hover:text-gray-200", "text-gray-100 rounded-md bg-gray-800 hover:bg-gray-800": @page == "publish"}><span>{l "Publish"}</span></LivePatch>
-      <LivePatch  to={"/breadpub/discover"} class={"px-3 py-2 text-sm text-gray-400 rounded-md font-regular hover:text-gray-200", "text-gray-100 rounded-md bg-gray-800 hover:bg-gray-800": @page == "discover"}><span>{l "Discover"}</span></LivePatch>
-      <LivePatch  to={"/breadpub/my-needs"} class={"px-3 py-2 text-sm text-gray-400 rounded-md font-regular hover:text-gray-200", "text-gray-100 rounded-md bg-gray-800 hover:bg-gray-800": @page == "my-needs"}><span>{l "My needs"}</span></LivePatch>
-      <LivePatch  to={"/breadpub/my-offers"} class={"px-3 py-2 text-sm text-gray-400 rounded-md font-regular hover:text-gray-200", "text-gray-100 rounded-md bg-gray-800 hover:bg-gray-800": @page == "my-offers"}><span>{l "My offers"}</span></LivePatch>
-      <LivePatch  to={"/breadpub/bookmarked"} class={"px-3 py-2 text-sm text-gray-400 rounded-md font-regular hover:text-gray-200", "text-gray-100 rounded-md bg-gray-800 hover:bg-gray-800": @page == "bookmarked"}><span>{l "Bookmarked"}</span></LivePatch>
-    </nav>
-  </div>
+<div 
+  class="flex items-center w-full px-3 mb-4 shadow-lg rounded-box menu bg-base-100 horizontal">
+  <ul class="flex items-stretch flex-1 w-full">
+    <li class={"bordered": @page == "publish"}>
+      <LivePatch  to={"/breadpub/publish"}>{l "Publish"}</LivePatch>
+    </li> 
+    <li class={"bordered": @page == "discover"}>
+      <LivePatch  to={"/breadpub/discover"}>{l "Discover"}</LivePatch>
+    </li> 
+    <li class={"bordered": @page == "my-needs"}>
+      <LivePatch  to={"/breadpub/my-needs"}>{l "My needs"}</LivePatch>
+    </li> 
+    <li class={"bordered": @page == "my-offers"}>
+      <LivePatch  to={"/breadpub/my-offers"}>{l "My offers"}</LivePatch>
+    </li> 
+    <li class={"bordered": @page == "bookmarked"}>
+      <LivePatch  to={"/breadpub/bookmarked"}>{l "Bookmarked"}</LivePatch>
+    </li> 
+  </ul>
 </div>

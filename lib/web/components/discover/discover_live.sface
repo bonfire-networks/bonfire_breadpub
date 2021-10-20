@@ -1,29 +1,13 @@
-<div class="flex flex-col items-center">
-  
-  <!-- <section class="bg-white rounded-lg shadow dark:bg-gray-700 w-center">
-    <div class="p-3 bg-purple-600 rounded-lg">
-      <div class="hidden p-2 sm:block">
-        <nav class="flex space-x-4" aria-label="Tabs">
-          <LivePatch  to={"/breadpub/discover"} class={"px-3 py-2 flex-1 text-sm text-gray-200 rounded-md font-regular"}><span class="block w-full text-center">{l "My feed"}</span></LivePatch>
-          <LivePatch  to={"/breadpub/discover/local"} class={"px-3 py-2 flex-1 text-sm text-gray-200 rounded-md font-regular"}><span class="block w-full text-center">{l "Local"}</span></LivePatch>
-          <LivePatch  to={"/breadpub/discover/federated"} class={"px-3 py-2 flex-1 text-sm text-gray-200 rounded-md font-regular"}><span class="block w-full text-center">{l "Federated"}</span></LivePatch>
-        </nav>
-      </div>
-    </div>
-  </section> -->
-
-  <div class="flex flex-col space-y-2 w-center">
-    {#for intent <- @intents}
-      <Bonfire.UI.Breadpub.IntentLive
-        key={e(intent, :id)}
-        name={e(intent, :name, nil)}
-        note={e(intent, :note, nil)}
-        intent={intent}
-        current_user={current_user(assigns)}
-       />
-    {#else}
-      No items
-    {/for}
-  </div>
-
+<div class="flex flex-col w-full space-y-2">
+  {#for intent <- @intents}
+    <Bonfire.UI.Breadpub.IntentLive
+      key={e(intent, :id)}
+      name={e(intent, :name, nil)}
+      note={e(intent, :note, nil)}
+      intent={intent}
+      current_user={current_user(assigns)}
+      />
+  {#else}
+    No items
+  {/for}
 </div>
