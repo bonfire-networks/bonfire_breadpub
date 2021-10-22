@@ -57,12 +57,13 @@
         <div class="text-xs font-medium tracking-wide text-gray-400">4 Boosts</div>
       </div>
       <div class="mt-6 -m-3">
-        {live_component(@socket,
-          Bonfire.UI.Social.ThreadLive,
-          id: e(@intent, :id, ""),
-          thread_id: e(@intent, :id, ""),
-          smart_input_placeholder: l "Post a comment..."
-          )}
+
+        <Bonfire.UI.Social.ThreadLive 
+          id={e(@intent, :id, "")}
+          thread_id={e(@intent, :id, "")}
+          smart_input_placeholder={l "Post a comment..."}
+          smart_input_text={e(@intent, :receiver, :display_username, "")<>e(@intent, :provider, :display_username, "")<>" "}
+        />
       </div>
 
       <div class="mt-6 -m-3">

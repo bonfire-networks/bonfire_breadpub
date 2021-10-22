@@ -34,7 +34,7 @@ defmodule Bonfire.Breadpub.IntentLive do
       page_title: "Intent",
       intent: intent,
       matches: ValueFlows.Util.search_for_matches(intent)
-    )}
+    )} #|> IO.inspect
     end
   end
 
