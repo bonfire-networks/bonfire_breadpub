@@ -17,7 +17,8 @@ defmodule Bonfire.Breadpub.MixProject do
         {:dbg, "~> 1.0", only: [:dev, :test]},
         {:floki, ">= 0.0.0", only: [:dev, :test]},
         {:absinthe, "~> 1.5.3", optional: true},
-        {:absinthe_plug, "~> 1.5", optional: true}
+        {:absinthe_plug, "~> 1.5", optional: true},
+        {:bonfire_search, git: "https://github.com/bonfire-networks/bonfire_search#main", optional: true}
       ]
     ]
   end

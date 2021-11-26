@@ -11,8 +11,8 @@
     submit="ValueFlows.Planning.Intent:create">
     <HiddenInput :if={e(assigns, :intent_url, nil)} name="redirect_after" value={@intent_url} />
     <HiddenInput :if={e(assigns, :action_id, nil)} name="action_id" value={@action_id} />
-    <HiddenInput :if={e(assigns, :intent_type, nil) == "need"} name="receiver" value={e(assigns, :current_user, :id, nil)} />
-    <HiddenInput :if={e(assigns, :intent_type, nil) == "offer"} name="provider" value={e(assigns, :current_user, :id, nil)} />
+    <HiddenInput :if={e(assigns, :intent_type, nil) == "need"} name="receiver" value={e(current_user(assigns), :id, nil)} />
+    <HiddenInput :if={e(assigns, :intent_type, nil) == "offer"} name="provider" value={e(current_user(assigns), :id, nil)} />
     <HiddenInput name="classified_as[]" value={Bonfire.Breadpub.Integration.remote_tag_id} />
 
     <!-- Create a title input form field -->

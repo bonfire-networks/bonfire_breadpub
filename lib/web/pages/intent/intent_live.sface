@@ -69,13 +69,9 @@
       <div class="mt-6 -m-3">
       <h1 class="text-xs text-gray-800 uppercase dark:text-gray-100 font-regular">{e(assigns, :matches, "nbHits", l "No")} possible {if @intent.is_offer, do: l("needs"), else: l("offers")} matching this {if @intent.is_offer, do: l("offer"), else: l("need")}</h1>
 
-        {live_component(
-            @socket,
-            Bonfire.Search.Web.ResultsLive,
-            assigns_merge(assigns,
-              hits: e(assigns, :matches, :hits, [])
-            )
-          )}
+        <Bonfire.Breadpub.MatchesLive
+          hits={e(assigns, :matches, :hits, [])}
+        />
       </div>
     </section>
   </main>
