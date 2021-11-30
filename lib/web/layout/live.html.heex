@@ -18,16 +18,16 @@
 
   <%= if !current_user(assigns) do %>
     <div class="container h-screen max-w-screen-lg mx-auto">
-      <%= live_component(@socket, Bonfire.UI.Social.LogoHeaderLive, assigns_clean(assigns)) %>
-      <%= live_component(@socket, Bonfire.UI.Social.HeaderGuestLive, assigns_clean(assigns)) %>
+      <Bonfire.UI.Social.HeaderGuestLive.render />
       <%= @inner_content %>
     </div>
   <% else %>
     <div class="h-screen overflow-hidden">
-      <%= live_component(@socket, Bonfire.UI.Social.HeaderUserLive, assigns_clean(assigns)) %>
+      <Bonfire.UI.Social.HeaderUserLive.render />
       <div class="h-screen overflow-y-auto">
         <div class="container flex max-w-screen-xl mx-auto">
-          <%= live_component(@socket, Bonfire.UI.ValueFlows.SidebarLive, assigns_merge(%{main_labels: []}, assigns)) %>
+          <Bonfire.UI.ValueFlows.SidebarLive.render
+          main_labels={[]} />
           <div class="flex flex-col flex-1 w-0">
             <div class="container mx-auto mb-16">
               <div class="p-4 lg:p-0">
