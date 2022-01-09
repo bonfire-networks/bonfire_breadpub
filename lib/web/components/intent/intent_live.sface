@@ -61,13 +61,11 @@
     <Bonfire.UI.Social.Activity.BoostActionLive 
       id={ComponentID.new(Bonfire.UI.Social.Activity.BoostActionLive, e(@intent, :id, ""))} 
       object_id={e(@intent, :id, "")} 
-      my_boost={e(assigns, :my_boost, nil)}
       boost_count={e(assigns, :boost_count, nil)}
       />
     <Bonfire.UI.Social.LikeActionLive
       id={ComponentID.new(Bonfire.UI.Social.LikeActionLive, @intent)} 
       object_id={e(@intent, :id, "")} 
-      my_like={e(assigns, :my_like, nil)}
       like_count={e(assigns, :like_count, nil)} 
       label={l "Bookmark"}
     />
