@@ -4,8 +4,8 @@
       class="flex items-center space-x-2"
       aria-label="Navigate to the previous page"
       href="javascript:window.history.back()">
-      <span class="flex items-center w-8 h-8 rounded-full place-content-center bg-blueGray-200 dark:bg-neutral-600 hover:bg-blueGray-300">
-        <svg class="w-4 h-4 text-primary-content-600 dark:text-primary-content-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      <span class="flex items-center w-8 h-8 rounded-full place-content-center bg-blueGray-200  hover:bg-blueGray-300">
+        <svg class="w-4 h-4 text-primary-content-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
       </span>
       <span class="text-sm font-medium text-primary-content-300">{l "Back"}</span>
     </a>
@@ -67,7 +67,7 @@
       </div>
 
       <div class="mt-6 -m-3">
-      <h1 class="text-xs text-primary-content-800 uppercase dark:text-primary-content-100 font-regular">{e(assigns, :matches, "nbHits", l "No")} possible {if @intent.is_offer, do: l("needs"), else: l("offers")} matching this {if @intent.is_offer, do: l("offer"), else: l("need")}</h1>
+      <h1 class="text-xs text-primary-content-800 uppercase  font-regular">{e(assigns, :matches, "nbHits", l "No")} possible {if @intent.is_offer, do: l("needs"), else: l("offers")} matching this {if @intent.is_offer, do: l("offer"), else: l("need")}</h1>
 
         <Bonfire.Breadpub.MatchesLive
           hits={e(assigns, :matches, :hits, [])}

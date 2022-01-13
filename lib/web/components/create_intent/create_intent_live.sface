@@ -20,13 +20,13 @@
       class="w-full p-2 m-0 rounded-lg shadow-inner bg-base-300"
       name={:name}>
       <Label class="block text-sm text-base-content text-opacity-80 font-regular">{l "Add a title"}</Label>
-      <TextInput class="block w-full rounded-box text-base-content border-base-300 bg-base-300 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+      <TextInput class="block w-full rounded-box text-base-content border-base-300 bg-base-300 focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm" />
     </Field>
     <Field 
       name={:note}
       class="w-full p-2 rounded-lg shadow-inner bg-base-300">
       <Label class="block text-sm text-base-content text-opacity-80 font-regular">{l "Write an optional description"}</Label>
-      <TextArea class="block w-full text-base-content border-base-300 bg-base-300 rounded-box focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></TextArea>
+      <TextArea class="block w-full text-base-content border-base-300 bg-base-300 rounded-box focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm"></TextArea>
     </Field>
     <button type="submit" class="w-full btn btn-primary">{l "Publish"}</button>
   </Form>
