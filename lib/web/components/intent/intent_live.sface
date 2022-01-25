@@ -20,7 +20,7 @@
     <!-- <div class="mt-1 justify-self-end">
       <Bonfire.UI.Social.LikeActionWithoutLabelLive  
       id={ComponentID.new(Bonfire.UI.Social.LikeActionWithoutLabelLive, e(@intent, :id, nil))} 
-      object_id={e(@intent, :id, nil)}
+      object={e(@intent, nil)}
       current_user={current_user(assigns)} 
       />
     </div> -->
@@ -60,12 +60,12 @@
       />
     <Bonfire.UI.Social.Activity.BoostActionLive 
       id={ComponentID.new(Bonfire.UI.Social.Activity.BoostActionLive, e(@intent, :id, ""))} 
-      object_id={e(@intent, :id, "")} 
+      object={@intent} 
       boost_count={e(assigns, :boost_count, nil)}
       />
     <Bonfire.UI.Social.LikeActionLive
       id={ComponentID.new(Bonfire.UI.Social.LikeActionLive, @intent)} 
-      object_id={e(@intent, :id, "")} 
+      object={@intent} 
       like_count={e(assigns, :like_count, nil)} 
       label={l "Bookmark"}
     />

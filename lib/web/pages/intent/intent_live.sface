@@ -45,7 +45,7 @@
           <div class="mt-1">
           <Bonfire.UI.Social.LikeActionWithoutLabelLive
             id={ComponentID.new(Bonfire.UI.Social.LikeActionWithoutLabelLive, @intent)} 
-            object_id={@intent.id}
+            object={@intent}
             current_user={current_user(assigns)}
             />
           </div>
