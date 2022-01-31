@@ -61,7 +61,7 @@
         <Bonfire.UI.Social.ThreadLive 
           id={e(@intent, :id, "")}
           thread_id={e(@intent, :id, "")}
-          smart_input_placeholder={l "Post a comment..."}
+          smart_input_prompt={l "Post a comment..."}
           smart_input_text={e(@intent, :receiver, :display_username, "")<>e(@intent, :provider, :display_username, "")<>" "}
         />
       </div>
