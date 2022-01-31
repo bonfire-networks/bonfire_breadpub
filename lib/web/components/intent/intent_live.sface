@@ -57,6 +57,8 @@
 
     <Bonfire.UI.Social.Activity.ReplyLive 
       permalink={path(@intent)}
+      object_id={e(@intent, :id, nil)}
+      reply_to_text={e(@intent, :name, nil)}
       />
     <Bonfire.UI.Social.Activity.BoostActionLive 
       id={ComponentID.new(Bonfire.UI.Social.Activity.BoostActionLive, e(@intent, :id, ""))} 
