@@ -5,40 +5,40 @@
       aria-label="Navigate to the previous page"
       href="javascript:window.history.back()">
       <span class="flex items-center w-8 h-8 rounded-full place-content-center bg-blueGray-200  hover:bg-blueGray-300">
-        <svg class="w-4 h-4 text-primary-content-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        <svg class="w-4 h-4 text-base-content-600 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
       </span>
-      <span class="text-sm font-medium text-primary-content-300">{l "Back"}</span>
+      <span class="text-sm font-medium text-base-content-300">{l "Back"}</span>
     </a>
     </div>
   <main class="flex flex-col items-center mx-auto mt-4">
     <section class="p-3 mb-4 bg-base-100 rounded-lg shadow dark:bg-blueGray-700 w-center">
       <div class="flex space-x-3 items-top ">
         <div class="flex-1">
-          <h3 class="text-lg text-primary-content-200 font-regular">{e(@intent, :name, nil)}</h3>
+          <h3 class="text-lg text-base-content-200 font-regular">{e(@intent, :name, nil)}</h3>
           <div class="flex items-center">
           <div class="flex items-center my-2 space-x-2">
             <span class="w-4 h-4 bg-pink-300 rounded-full"></span>
             {#if e(@intent, :provider, nil) != nil}
-              <LiveRedirect class="text-xs tracking-wide text-primary-content-300 hover:underline font-regular" to={path(e(@intent, :provider, nil))}>
+              <LiveRedirect class="text-xs tracking-wide text-base-content-300 hover:underline font-regular" to={path(e(@intent, :provider, nil))}>
                 {e(@intent, :provider, :name, nil)}
               </LiveRedirect>
             {#else}
-              <LiveRedirect class="text-xs tracking-wide text-primary-content-300 hover:underline font-regular" to={path(e(@intent, :receiver, nil))}>
+              <LiveRedirect class="text-xs tracking-wide text-base-content-300 hover:underline font-regular" to={path(e(@intent, :receiver, nil))}>
               { e(@intent, :receiver, :name, nil)}
               </LiveRedirect>
             {/if}      
           </div>
-          <span class="ml-1 text-xs tracking-wide text-primary-content-400 font-regular">- {date_from_now(@intent)}</span>
+          <span class="ml-1 text-xs tracking-wide text-base-content-400 font-regular">- {date_from_now(@intent)}</span>
           </div>
-          <div class="prose-sm prose text-primary-content-300">{e(@intent, :note, nil)}</div>
+          <div class="prose-sm prose text-base-content-300">{e(@intent, :note, nil)}</div>
         </div>
         <div class="flex items-start space-x-2">
           {#if @intent.is_offer}
-          <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-primary-content-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
+          <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-base-content-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
             {l "offer"}
           </span>
           {#else}
-          <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-primary-content-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
+          <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-base-content-100 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
             {l "need"}
           </span>
           {/if}
@@ -52,9 +52,9 @@
         </div>
       </div>
       <div class="flex mt-2 space-x-4">
-        <div class="text-xs font-medium tracking-wide text-primary-content-400">2 Replies</div>
-        <div class="text-xs font-medium tracking-wide text-primary-content-400">54 Likes</div>
-        <div class="text-xs font-medium tracking-wide text-primary-content-400">4 Boosts</div>
+        <div class="text-xs font-medium tracking-wide text-base-content-400">2 Replies</div>
+        <div class="text-xs font-medium tracking-wide text-base-content-400">54 Likes</div>
+        <div class="text-xs font-medium tracking-wide text-base-content-400">4 Boosts</div>
       </div>
       <div class="mt-6 -m-3">
 
@@ -67,7 +67,7 @@
       </div>
 
       <div class="mt-6 -m-3">
-      <h1 class="text-xs text-primary-content-800 uppercase  font-regular">{e(assigns, :matches, "nbHits", l "No")} possible {if @intent.is_offer, do: l("needs"), else: l("offers")} matching this {if @intent.is_offer, do: l("offer"), else: l("need")}</h1>
+      <h1 class="text-xs text-base-content-800 uppercase  font-regular">{e(assigns, :matches, "nbHits", l "No")} possible {if @intent.is_offer, do: l("needs"), else: l("offers")} matching this {if @intent.is_offer, do: l("offer"), else: l("need")}</h1>
 
         <Bonfire.Breadpub.MatchesLive
           hits={e(assigns, :matches, :hits, [])}
