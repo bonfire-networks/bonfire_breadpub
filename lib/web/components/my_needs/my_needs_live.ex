@@ -1,5 +1,5 @@
 defmodule Bonfire.UI.Breadpub.MyNeedsLive do
-  use Bonfire.Web, :stateless_component
+  use Bonfire.UI.Common.Web, :stateless_component
   prop intents, :any
 
 

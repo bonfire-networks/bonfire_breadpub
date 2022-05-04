@@ -1,16 +1,17 @@
 defmodule Bonfire.Breadpub.MapLive do
-  use Bonfire.Web, {:live_view, [layout: {Bonfire.Breadpub.LayoutView, "live.html"}]}
+  use Bonfire.UI.Common.Web, {:live_view, [layout: {Bonfire.Breadpub.LayoutView, "live.html"}]}
 
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
-  alias Bonfire.Web.LivePlugs
+  alias Bonfire.Me.Web.LivePlugs
 
   def mount(params, session, socket) do
-    LivePlugs.live_plug params, session, socket, [
+    live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
-      LivePlugs.StaticChanged,
-      LivePlugs.Csrf, LivePlugs.Locale,
+      Bonfire.UI.Common.LivePlugs.StaticChanged,
+      Bonfire.UI.Common.LivePlugs.Csrf,
+      Bonfire.UI.Common.LivePlugs.Locale,
       &mounted/3,
     ]
   end

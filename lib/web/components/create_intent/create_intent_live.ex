@@ -1,5 +1,5 @@
 defmodule Bonfire.UI.Breadpub.CreateIntentLive do
-  use Bonfire.Web, :stateless_component
+  use Bonfire.UI.Common.Web, :stateless_component
 
   prop intent_url, :string, required: false, default: ""
   prop action_id, :string, required: false, default: "work"
