@@ -26,7 +26,7 @@ defmodule Bonfire.Breadpub.ConnCase do
       import Bonfire.UI.Common.Testing.Helpers
 
       import Phoenix.LiveViewTest
-      import Bonfire.Breadpub.ConnCase
+      # import Bonfire.Breadpub.ConnCase
       import Bonfire.Breadpub.Test.ConnHelpers
       import Bonfire.Breadpub.Test.FakeHelpers
       alias Bonfire.Breadpub.Fake

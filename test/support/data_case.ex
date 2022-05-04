@@ -23,7 +23,7 @@ defmodule Bonfire.Breadpub.DataCase do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Bonfire.Breadpub.DataCase
+      # import Bonfire.Breadpub.DataCase
     end
   end
 
