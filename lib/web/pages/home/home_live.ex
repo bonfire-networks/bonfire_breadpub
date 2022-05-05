@@ -1,5 +1,5 @@
 defmodule Bonfire.Breadpub.Web.HomeLive do
-  use Bonfire.UI.Common.Web, {:surface_view, [layout: {Bonfire.UI.Social.Web.LayoutView, "without_sidebar.html"}]}
+  use Bonfire.UI.Common.Web, :surface_view
 
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
@@ -28,7 +28,8 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
       page: "publish",
       action_id: "work",
       intent_type: "need",
-      intent_url: "/breadpub/intent/"
+      intent_url: "/breadpub/intent/",
+      without_sidebar: true
     )}
   end
 
