@@ -3,7 +3,7 @@ defmodule Bonfire.Breadpub.MapLive do
 
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
-  alias Bonfire.Me.Web.LivePlugs
+  alias Bonfire.UI.Me.LivePlugs
 
   def mount(params, session, socket) do
     live_plug params, session, socket, [

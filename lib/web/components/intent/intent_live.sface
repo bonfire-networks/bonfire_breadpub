@@ -18,8 +18,8 @@
     </div>
 
     <!-- <div class="mt-1 justify-self-end">
-      <Bonfire.UI.Social.LikeActionWithoutLabelLive  
-      id={ComponentID.new(Bonfire.UI.Social.LikeActionWithoutLabelLive, e(@intent, :id, nil))} 
+      <Bonfire.UI.Common.LikeActionWithoutLabelLive  
+      id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, e(@intent, :id, nil))} 
       object={e(@intent, nil)}
       current_user={current_user(assigns)} 
       />
@@ -60,13 +60,13 @@
       object_id={e(@intent, :id, "no-object")}
       reply_to_text={e(@intent, :name, nil)}
       />
-    <Bonfire.UI.Social.Activity.BoostActionLive 
-      id={ComponentID.new(Bonfire.UI.Social.Activity.BoostActionLive, e(@intent, :id, ""))} 
+    <Bonfire.UI.Common.BoostActionLive 
+      id={ComponentID.new(Bonfire.UI.Common.BoostActionLive, e(@intent, :id, ""))} 
       object={@intent} 
       boost_count={e(assigns, :boost_count, nil)}
       />
-    <Bonfire.UI.Social.LikeActionLive
-      id={ComponentID.new(Bonfire.UI.Social.LikeActionLive, @intent)} 
+    <Bonfire.UI.Common.LikeActionLive
+      id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, @intent)} 
       object={@intent} 
       like_count={e(assigns, :like_count, nil)} 
       label={l "Bookmark"}
