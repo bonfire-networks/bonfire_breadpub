@@ -66,7 +66,7 @@
       boost_count={e(assigns, :boost_count, nil)}
       />
     <Bonfire.UI.Common.LikeActionLive
-      id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, @intent)} 
+      id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, e(@intent, :id, ""))} 
       object={@intent} 
       like_count={e(assigns, :like_count, nil)} 
       label={l "Bookmark"}
