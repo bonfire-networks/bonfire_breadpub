@@ -21,7 +21,7 @@
       <Bonfire.UI.Common.LikeActionWithoutLabelLive  
       id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, e(@intent, :id, nil))} 
       object={e(@intent, nil)}
-      current_user={current_user(assigns)} 
+      current_user={current_user(@__context__)} 
       />
     </div> -->
 

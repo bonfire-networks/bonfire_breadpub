@@ -9,7 +9,7 @@
     {#match "discover"}
     <Bonfire.UI.Breadpub.DiscoverLive
       intents={@intents}
-      current_user={current_user(assigns)}
+      current_user={current_user(@__context__)}
     />
     {#match "my-needs"}
     <Bonfire.UI.Breadpub.MyNeedsLive  intents={@intents} />
