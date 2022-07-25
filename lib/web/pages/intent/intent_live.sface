@@ -68,10 +68,10 @@
       </div>
 
       <div class="mt-6 -m-3">
-      <h1 class="text-xs text-base-content opacity-80 uppercase  font-regular">{e(assigns, :matches, "nbHits", l "No")} possible {if @intent.is_offer, do: l("needs"), else: l("offers")} matching this {if @intent.is_offer, do: l("offer"), else: l("need")}</h1>
+      <h1 class="text-xs text-base-content opacity-80 uppercase  font-regular">{e(@matches, "nbHits", l "No")} possible {if @intent.is_offer, do: l("needs"), else: l("offers")} matching this {if @intent.is_offer, do: l("offer"), else: l("need")}</h1>
 
         <Bonfire.Breadpub.MatchesLive
-          hits={e(assigns, :matches, :hits, [])}
+          hits={e(@matches, :hits, [])}
         />
       </div>
     </section>

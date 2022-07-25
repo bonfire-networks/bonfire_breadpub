@@ -6,13 +6,13 @@
   <!-- Create a form -->
   <Form
     class="flex flex-col w-full p-2 space-y-4"
-    for={e(assigns, :globals, ValueFlows.Planning.Intent, :changeset, ValueFlows.Planning.Intent.validate_changeset())}
+    for={e(@__context__, ValueFlows.Planning.Intent, :changeset, ValueFlows.Planning.Intent.validate_changeset())}
     opts={autocomplete: "off"}
     submit="ValueFlows.Planning.Intent:create">
-    <HiddenInput :if={e(assigns, :intent_url, nil)} name="redirect_after" value={@intent_url} />
-    <HiddenInput :if={e(assigns, :action_id, nil)} name="action_id" value={@action_id} />
-    <HiddenInput :if={e(assigns, :intent_type, nil) == "need"} name="receiver" value={e(current_user(@__context__), :id, nil)} />
-    <HiddenInput :if={e(assigns, :intent_type, nil) == "offer"} name="provider" value={e(current_user(@__context__), :id, nil)} />
+    <HiddenInput :if={e(@intent_url, nil)} name="redirect_after" value={@intent_url} />
+    <HiddenInput :if={e(@action_id, nil)} name="action_id" value={@action_id} />
+    <HiddenInput :if={e(@intent_type, nil) == "need"} name="receiver" value={ulid(current_user(@__context__))} />
+    <HiddenInput :if={e(@intent_type, nil) == "offer"} name="provider" value={ulid(current_user(@__context__))} />
     <HiddenInput name="classified_as[]" value={Bonfire.Breadpub.Integration.remote_tag_id} />
 
     <!-- Create a title input form field -->

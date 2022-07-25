@@ -1,5 +1,5 @@
 defmodule Bonfire.Breadpub.Web.HomeLive do
-  use Bonfire.UI.Common.Web, :surface_view
+  use Bonfire.UI.Common.Web, :surface_live_view
 
   use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
 
@@ -119,6 +119,8 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
     end
   end
 
+  # TODO: filer only for breadpub offers/needs?
+  # classified_as: "#{Bonfire.Breadpub.Integration.remote_tag_id}"
 
   @graphql """
   query($provider: ID, $receiver: ID) {
@@ -127,7 +129,6 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
         provider: $provider,
         receiver: $receiver,
         status: "open",
-        classified_as: "#{Bonfire.Breadpub.Integration.remote_tag_id}"
       },
       limit: 200
     ) {

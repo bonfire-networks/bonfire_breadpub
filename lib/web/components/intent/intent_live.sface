@@ -12,14 +12,14 @@
     {/if}
 
     <div class="flex-auto">
-    <LiveRedirect to={"/breadpub/intent/#{e(@intent, :id, nil)}"}>
+    <LiveRedirect to={"/breadpub/intent/#{ulid(@intent)}"}>
       <h3 class="text-base leading-snug text-base-content hover:underline font-regular">{@name}</h3>
     </LiveRedirect>
     </div>
 
     <!-- <div class="mt-1 justify-self-end">
       <Bonfire.UI.Common.LikeActionWithoutLabelLive  
-      id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, e(@intent, :id, nil))} 
+      id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, ulid(@intent))} 
       object={e(@intent, nil)}
       current_user={current_user(@__context__)} 
       />
@@ -50,7 +50,6 @@
   
     <div class="flex-1 mt-3 prose-sm prose text-base-content text-opacity-80">{@note}</div>
 
-
   </div>
 
   <div class="flex justify-start mt-2 space-x-4">
@@ -63,12 +62,10 @@
     <Bonfire.UI.Common.BoostActionLive 
       id={ComponentID.new(Bonfire.UI.Common.BoostActionLive, e(@intent, :id, ""))} 
       object={@intent} 
-      boost_count={e(assigns, :boost_count, nil)}
       />
     <Bonfire.UI.Common.LikeActionLive
       id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, e(@intent, :id, ""))} 
       object={@intent} 
-      like_count={e(assigns, :like_count, nil)} 
       label={l "Bookmark"}
     />
 
