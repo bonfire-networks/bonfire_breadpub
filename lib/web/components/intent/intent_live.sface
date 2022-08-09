@@ -20,7 +20,7 @@
     <!-- <div class="mt-1 justify-self-end">
       <Bonfire.UI.Common.LikeActionWithoutLabelLive  
       id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, ulid(@intent))} 
-      object={e(@intent, nil)}
+      object={@intent}
       current_user={current_user(@__context__)} 
       />
     </div> -->
