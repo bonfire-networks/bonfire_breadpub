@@ -10,6 +10,9 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
 
   prop selected_tab, :string, default: "publish"
 
+
+  declare_extension("BreadPub", icon: "mingcute:bread-fill")
+
   def mount(params, session, socket) do
     live_plug params, session, socket, [
       LivePlugs.LoadCurrentAccount,
