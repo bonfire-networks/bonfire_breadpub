@@ -1,20 +1,19 @@
-<div 
-  class="flex items-center w-full px-3 mb-4 shadow-lg rounded-box menu bg-base-100 horizontal">
+<div class="flex items-center w-full px-3 mb-4 shadow-lg rounded-box menu bg-base-100 horizontal">
   <ul class="flex items-stretch flex-1 w-full">
-    <li class={"bordered": @page == "publish"}>
-      <LivePatch  to={"/breadpub/publish"}>{l "Publish"}</LivePatch>
-    </li> 
-    <li class={"bordered": @page == "discover"}>
-      <LivePatch  to={"/breadpub/discover"}>{l "Discover"}</LivePatch>
-    </li> 
-    <li class={"bordered": @page == "my-needs"}>
-      <LivePatch  to={"/breadpub/my-needs"}>{l "My needs"}</LivePatch>
-    </li> 
-    <li class={"bordered": @page == "my-offers"}>
-      <LivePatch  to={"/breadpub/my-offers"}>{l "My offers"}</LivePatch>
-    </li> 
-    <li class={"bordered": @page == "bookmarked"}>
-      <LivePatch  to={"/breadpub/bookmarked"}>{l "Bookmarked"}</LivePatch>
-    </li> 
+    <li class={bordered: @page == "publish"}>
+      <LivePatch to="/breadpub/publish">{l("Publish")}</LivePatch>
+    </li>
+    <li class={bordered: @page == "discover"}>
+      <LivePatch to="/breadpub/discover">{l("Discover")}</LivePatch>
+    </li>
+    <li class={bordered: @page == "my-needs"}>
+      <LivePatch to="/breadpub/my-needs">{l("My needs")}</LivePatch>
+    </li>
+    <li class={bordered: @page == "my-offers"}>
+      <LivePatch to="/breadpub/my-offers">{l("My offers")}</LivePatch>
+    </li>
+    <li class={bordered: @page == "bookmarked"}>
+      <LivePatch to="/breadpub/bookmarked">{l("Bookmarked")}</LivePatch>
+    </li>
   </ul>
 </div>

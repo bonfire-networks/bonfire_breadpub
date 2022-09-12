@@ -1,29 +1,25 @@
 defmodule Bonfire.Breadpub.Web.Routes do
   defmacro __using__(_) do
-
     quote do
-
       # pages anyone can view
       scope "/breadpub", Bonfire.Breadpub do
-        pipe_through :browser
-
+        pipe_through(:browser)
       end
 
       # pages you need an account to view
       scope "/breadpub", Bonfire.Breadpub do
-        pipe_through :browser
-        pipe_through :account_required
-
+        pipe_through(:browser)
+        pipe_through(:account_required)
       end
 
       # VF pages you need to view as a user
       scope "/breadpub", Bonfire.Breadpub do
-        pipe_through :browser
-        pipe_through :user_required
+        pipe_through(:browser)
+        pipe_through(:user_required)
 
-        live "/", Web.HomeLive
-        live "/:tab", Web.HomeLive
-        live "/intent/:id", IntentLive, as: ValueFlows.Planning.Intent
+        live("/", Web.HomeLive)
+        live("/:tab", Web.HomeLive)
+        live("/intent/:id", IntentLive, as: ValueFlows.Planning.Intent)
         # live "/lists", ProcessesLive
         # live "/list/:milestone_id", ProcessLive
         # live "/create-intent", CreateIntentLive
@@ -34,7 +30,6 @@ defmodule Bonfire.Breadpub.Web.Routes do
 
         # live "/map/", MapLive
         # live "/map/:id", MapLive
-
       end
     end
   end

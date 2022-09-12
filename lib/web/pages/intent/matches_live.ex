@@ -6,10 +6,7 @@ defmodule Bonfire.Breadpub.MatchesLive do
   def render(assigns) do
     if module_enabled?(Bonfire.Search.Web.ResultsLive) do
       ~F"""
-      <Bonfire.Search.Web.ResultsLive
-        search_limit=10
-        show_more_link={false}
-      />
+      <Bonfire.Search.Web.ResultsLive search_limit="10" show_more_link={false} />
       """
     else
       ~F"""

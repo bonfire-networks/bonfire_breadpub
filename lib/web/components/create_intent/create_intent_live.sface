@@ -1,33 +1,49 @@
 <section class="w-full p-4 shadow bg-base-100 rounded-box">
   <div class="grid h-12 grid-cols-2 gap-1 p-1 m-2 rounded-lg shadow-inner w-80 bg-base-300">
-    <div phx-value-id="need" phx-click="toggle_intent_type" class={"hover:bg-secondary-focus cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-base-content rounded-md", "text-secondary-content bg-secondary": @intent_type == "need" }>{l "I need"}</div>
-    <div phx-value-id="offer" phx-click="toggle_intent_type" class={"hover:bg-secondary-focus cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-base-content rounded-md", "text-secondary-content bg-secondary": @intent_type == "offer"}>{l "I can offer"}</div>
+    <div
+      phx-value-id="need"
+      phx-click="toggle_intent_type"
+      class={
+        "hover:bg-secondary-focus cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-base-content rounded-md",
+        "text-secondary-content bg-secondary": @intent_type == "need"
+      }
+    >{l("I need")}</div>
+    <div
+      phx-value-id="offer"
+      phx-click="toggle_intent_type"
+      class={
+        "hover:bg-secondary-focus cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-base-content rounded-md",
+        "text-secondary-content bg-secondary": @intent_type == "offer"
+      }
+    >{l("I can offer")}</div>
   </div>
   <!-- Create a form -->
   <Form
     class="flex flex-col w-full p-2 space-y-4"
-    for={e(@__context__, ValueFlows.Planning.Intent, :changeset, ValueFlows.Planning.Intent.validate_changeset())}
+    for={e(
+      @__context__,
+      ValueFlows.Planning.Intent,
+      :changeset,
+      ValueFlows.Planning.Intent.validate_changeset()
+    )}
     opts={autocomplete: "off"}
-    submit="ValueFlows.Planning.Intent:create">
+    submit="ValueFlows.Planning.Intent:create"
+  >
     <HiddenInput :if={@intent_url} name="redirect_after" value={@intent_url} />
     <HiddenInput :if={@action_id} name="action_id" value={@action_id} />
     <HiddenInput :if={@intent_type == "need"} name="receiver" value={ulid(@current_user)} />
     <HiddenInput :if={@intent_type == "offer"} name="provider" value={ulid(@current_user)} />
-    <HiddenInput name="classified_as[]" value={Bonfire.Breadpub.Integration.remote_tag_id} />
+    <HiddenInput name="classified_as[]" value={Bonfire.Breadpub.Integration.remote_tag_id()} />
 
     <!-- Create a title input form field -->
-    <Field 
-      class="w-full p-2 m-0 rounded-lg shadow-inner bg-base-300"
-      name={:name}>
-      <Label class="block text-sm text-base-content text-opacity-80 font-regular">{l "Add a title"}</Label>
+    <Field class="w-full p-2 m-0 rounded-lg shadow-inner bg-base-300" name={:name}>
+      <Label class="block text-sm text-base-content text-opacity-80 font-regular">{l("Add a title")}</Label>
       <TextInput class="block w-full rounded-box text-base-content border-base-300 bg-base-300 focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm" />
     </Field>
-    <Field 
-      name={:note}
-      class="w-full p-2 rounded-lg shadow-inner bg-base-300">
-      <Label class="block text-sm text-base-content text-opacity-80 font-regular">{l "Write an optional description"}</Label>
-      <TextArea class="block w-full text-base-content border-base-300 bg-base-300 rounded-box focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm"></TextArea>
+    <Field name={:note} class="w-full p-2 rounded-lg shadow-inner bg-base-300">
+      <Label class="block text-sm text-base-content text-opacity-80 font-regular">{l("Write an optional description")}</Label>
+      <TextArea class="block w-full text-base-content border-base-300 bg-base-300 rounded-box focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm" />
     </Field>
-    <button type="submit" class="w-full btn btn-primary">{l "Publish"}</button>
+    <button type="submit" class="w-full btn btn-primary">{l("Publish")}</button>
   </Form>
 </section>

@@ -1,34 +1,37 @@
 defmodule Bonfire.Breadpub.MapLive do
   use Bonfire.UI.Common.Web, :live_view
 
-  use AbsintheClient, schema: Bonfire.API.GraphQL.Schema, action: [mode: :internal]
+  use AbsintheClient,
+    schema: Bonfire.API.GraphQL.Schema,
+    action: [mode: :internal]
 
   alias Bonfire.UI.Me.LivePlugs
 
   def mount(params, session, socket) do
-    live_plug params, session, socket, [
+    live_plug(params, session, socket, [
       LivePlugs.LoadCurrentAccount,
       LivePlugs.LoadCurrentUser,
       Bonfire.UI.Common.LivePlugs.StaticChanged,
       Bonfire.UI.Common.LivePlugs.Csrf,
       Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3,
-    ]
+      &mounted/3
+    ])
   end
 
   defp mounted(params, session, socket) do
     # intents = Bonfire.Breadpub.ProposalLive.all_intents(socket)
-    #debug(intents)
+    # debug(intents)
 
-    {:ok, socket
-    |> assign(
-      page_title: "Map",
-      selected_tab: "about",
-      markers: [],
-      points: [],
-      place: nil,
-      main_labels: []
-    )}
+    {:ok,
+     assign(
+       socket,
+       page_title: "Map",
+       selected_tab: "about",
+       markers: [],
+       points: [],
+       place: nil,
+       main_labels: []
+     )}
   end
 
   def fetch_place_things(filters, socket) do
@@ -37,8 +40,8 @@ defmodule Bonfire.Breadpub.MapLive do
       debug(things)
 
       things =
-        things
-        |> Enum.map(
+        Enum.map(
+          things,
           &Map.merge(
             Bonfire.Geolocate.Geolocations.populate_coordinates(Map.get(&1, :at_location)),
             &1 || %{}
@@ -56,10 +59,9 @@ defmodule Bonfire.Breadpub.MapLive do
   end
 
   # proxy relevent events to the map component
-  def handle_event("map_"<>_action = event, params, socket) do
+  def handle_event("map_" <> _action = event, params, socket) do
     debug(proxy_event: event)
     debug(proxy_params: params)
     Bonfire.Geolocate.MapLive.handle_event(event, params, socket, true)
   end
-
 end

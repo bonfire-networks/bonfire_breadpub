@@ -4,50 +4,62 @@
       x-show="history.length > 2 && document.referrer.indexOf(window.location.host) !== -1"
       class="flex items-center space-x-2"
       aria-label="Navigate to the previous page"
-      href="javascript:window.history.back()">
-      <span class="flex items-center w-8 h-8 rounded-full place-content-center   ">
-        <svg class="w-4 h-4 text-base-content opacity-60 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      href="javascript:window.history.back()"
+    >
+      <span class="flex items-center w-8 h-8 rounded-full place-content-center">
+        <svg
+          class="w-4 h-4 text-base-content opacity-60"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
       </span>
-      <span class="text-sm font-medium text-base-content opacity-60">{l "Back"}</span>
+      <span class="text-sm font-medium text-base-content opacity-60">{l("Back")}</span>
     </a>
-    </div>
+  </div>
   <main class="flex flex-col items-center mx-auto mt-4">
     <section class="p-3 mb-4 bg-base-100 rounded-lg shadow  w-center">
-      <div class="flex space-x-3 items-top ">
+      <div class="flex space-x-3 items-top">
         <div class="flex-1">
           <h3 class="text-lg text-base-content opacity-60 font-regular">{e(@intent, :name, nil)}</h3>
           <div class="flex items-center">
-          <div class="flex items-center my-2 space-x-2">
-            <span class="w-4 h-4  rounded-full"></span>
-            {#if e(@intent, :provider, nil) != nil}
-              <LiveRedirect class="text-xs tracking-wide text-base-content opacity-60 hover:underline font-regular" to={path(e(@intent, :provider, nil))}>
-                {e(@intent, :provider, :name, nil)}
-              </LiveRedirect>
-            {#else}
-              <LiveRedirect class="text-xs tracking-wide text-base-content opacity-60 hover:underline font-regular" to={path(e(@intent, :receiver, nil))}>
-              { e(@intent, :receiver, :name, nil)}
-              </LiveRedirect>
-            {/if}      
-          </div>
-          <span class="ml-1 text-xs tracking-wide text-base-content opacity-60 font-regular">- {date_from_now(@intent)}</span>
+            <div class="flex items-center my-2 space-x-2">
+              <span class="w-4 h-4  rounded-full" />
+              {#if e(@intent, :provider, nil) != nil}
+                <LiveRedirect
+                  class="text-xs tracking-wide text-base-content opacity-60 hover:underline font-regular"
+                  to={path(e(@intent, :provider, nil))}
+                >
+                  {e(@intent, :provider, :name, nil)}
+                </LiveRedirect>
+              {#else}
+                <LiveRedirect
+                  class="text-xs tracking-wide text-base-content opacity-60 hover:underline font-regular"
+                  to={path(e(@intent, :receiver, nil))}
+                >
+                  {e(@intent, :receiver, :name, nil)}
+                </LiveRedirect>
+              {/if}
+            </div>
+            <span class="ml-1 text-xs tracking-wide text-base-content opacity-60 font-regular">- {date_from_now(@intent)}</span>
           </div>
           <div class="prose-sm prose text-base-content opacity-60">{e(@intent, :note, nil)}</div>
         </div>
         <div class="flex items-start space-x-2">
           {#if @intent.is_offer}
-          <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-base-content opacity-60 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
-            {l "offer"}
-          </span>
+            <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-base-content opacity-60 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
+              {l("offer")}
+            </span>
           {#else}
-          <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-base-content opacity-60 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
-            {l "need"}
-          </span>
+            <span class="flex items-center justify-center px-2 py-1 text-sm font-medium text-center text-base-content opacity-60 border-none rounded-md bg-gradient-to-r from-purple-600 to-pink-400">
+              {l("need")}
+            </span>
           {/if}
           <div class="mt-1">
-          <Bonfire.UI.Common.LikeActionWithoutLabelLive
-            id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, @intent)} 
-            object={@intent}
-            
+            <Bonfire.UI.Common.LikeActionWithoutLabelLive
+              id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, @intent)}
+              object={@intent}
             />
           </div>
         </div>
@@ -58,21 +70,19 @@
         <div class="text-xs font-medium tracking-wide text-base-content opacity-60">4 Boosts</div>
       </div>
       <div class="mt-6 -m-3">
-
-        <Bonfire.UI.Social.ThreadLive 
+        <Bonfire.UI.Social.ThreadLive
           id={e(@intent, :id, "")}
           thread_id={e(@intent, :id, "")}
-          smart_input_prompt={l "Post a comment..."}
-          smart_input_text={e(@intent, :receiver, :display_username, "")<>e(@intent, :provider, :display_username, "")<>" "}
+          smart_input_prompt={l("Post a comment...")}
+          smart_input_text={e(@intent, :receiver, :display_username, "") <>
+            e(@intent, :provider, :display_username, "") <> " "}
         />
       </div>
 
       <div class="mt-6 -m-3">
-      <h1 class="text-xs text-base-content opacity-80 uppercase  font-regular">{e(@matches, "nbHits", l "No")} possible {if @intent.is_offer, do: l("needs"), else: l("offers")} matching this {if @intent.is_offer, do: l("offer"), else: l("need")}</h1>
+        <h1 class="text-xs text-base-content opacity-80 uppercase  font-regular">{e(@matches, "nbHits", l("No"))} possible {if @intent.is_offer, do: l("needs"), else: l("offers")} matching this {if @intent.is_offer, do: l("offer"), else: l("need")}</h1>
 
-        <Bonfire.Breadpub.MatchesLive
-          hits={e(@matches, :hits, [])}
-        />
+        <Bonfire.Breadpub.MatchesLive hits={e(@matches, :hits, [])} />
       </div>
     </section>
   </main>

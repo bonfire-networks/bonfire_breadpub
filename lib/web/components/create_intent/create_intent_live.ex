@@ -6,5 +6,4 @@ defmodule Bonfire.UI.Breadpub.CreateIntentLive do
   prop output_of_id, :string, required: false
   prop title, :string, default: "Create a new intent"
   prop intent_type, :string, default: "need"
-
 end

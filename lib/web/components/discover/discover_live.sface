@@ -5,8 +5,7 @@
       name={e(intent, :name, nil)}
       note={e(intent, :note, nil)}
       intent={intent}
-      
-      />
+    />
   {#else}
     No items
   {/for}

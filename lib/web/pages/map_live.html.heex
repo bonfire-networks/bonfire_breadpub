@@ -1,5 +1,4 @@
 <div class="container h-screen max-w-screen-lg mx-auto">
-
   <%= live_component(
     @socket,
     Bonfire.Geolocate.MapLive,
@@ -7,6 +6,5 @@
     markers: @markers,
     points: @points,
     place: @place
-  )  %>
-
+  ) %>
 </div>
