@@ -7,9 +7,11 @@ defmodule Bonfire.Breadpub.Web.Routes do
       end
 
       # pages you need an account to view
-      scope "/breadpub", Bonfire.Breadpub do
+      scope "/breadpub" do
         pipe_through(:browser)
         pipe_through(:account_required)
+
+        live("/settings/", Bonfire.UI.ValueFlows.SettingsLive)
       end
 
       # VF pages you need to view as a user

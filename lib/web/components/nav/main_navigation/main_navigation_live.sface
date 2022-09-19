@@ -1,19 +1,22 @@
 <div class="flex items-center w-full px-3 mb-4 shadow-lg rounded-box menu bg-base-100 horizontal">
   <ul class="flex items-stretch flex-1 w-full">
     <li class={bordered: @page == "publish"}>
-      <LivePatch to="/breadpub/publish">{l("Publish")}</LivePatch>
+      <LiveRedirect to="/breadpub/publish">{l("Publish")}</LiveRedirect>
     </li>
     <li class={bordered: @page == "discover"}>
-      <LivePatch to="/breadpub/discover">{l("Discover")}</LivePatch>
+      <LiveRedirect to="/breadpub/discover">{l("Discover")}</LiveRedirect>
     </li>
     <li class={bordered: @page == "my-needs"}>
-      <LivePatch to="/breadpub/my-needs">{l("My needs")}</LivePatch>
+      <LiveRedirect to="/breadpub/my-needs">{l("My needs")}</LiveRedirect>
     </li>
     <li class={bordered: @page == "my-offers"}>
-      <LivePatch to="/breadpub/my-offers">{l("My offers")}</LivePatch>
+      <LiveRedirect to="/breadpub/my-offers">{l("My offers")}</LiveRedirect>
     </li>
     <li class={bordered: @page == "bookmarked"}>
-      <LivePatch to="/breadpub/bookmarked">{l("Bookmarked")}</LivePatch>
+      <LiveRedirect to="/breadpub/bookmarked">{l("Bookmarked")}</LiveRedirect>
+    </li>
+    <li class={bordered: @page == "settings"}>
+      <LiveRedirect to={path(Bonfire.UI.ValueFlows.SettingsLive)}>{l("Settings")}</LiveRedirect>
     </li>
   </ul>
 </div>
