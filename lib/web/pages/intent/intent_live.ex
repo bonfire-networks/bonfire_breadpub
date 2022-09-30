@@ -41,7 +41,8 @@ defmodule Bonfire.Breadpub.IntentLive do
          page_title: "Intent",
          intent: intent,
          matches: ValueFlows.Util.search_for_matches(intent),
-         without_sidebar: true
+         without_sidebar: true,
+         showing_within: :intent
        )}
 
       # |> IO.inspect

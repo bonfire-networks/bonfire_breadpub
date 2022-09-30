@@ -1,22 +1,6 @@
 <div class="flex flex-col w-full mx-auto">
   <div class="mx-auto mt-8 w-center">
-    <a
-      x-show="history.length > 2 && document.referrer.indexOf(window.location.host) !== -1"
-      class="flex items-center space-x-2"
-      aria-label="Navigate to the previous page"
-      href="javascript:window.history.back()"
-    >
-      <span class="flex items-center w-8 h-8 rounded-full place-content-center">
-        <svg
-          class="w-4 h-4 text-base-content opacity-60"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-      </span>
-      <span class="text-sm font-medium text-base-content opacity-60">{l("Back")}</span>
-    </a>
+    <Bonfire.UI.Common.BackButtonLive showing_within={@showing_within} />
   </div>
   <main class="flex flex-col items-center mx-auto mt-4">
     <section class="p-3 mb-4 bg-base-100 rounded-lg shadow  w-center">
