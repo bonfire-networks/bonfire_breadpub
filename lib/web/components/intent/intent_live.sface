@@ -17,8 +17,8 @@
     </div>
 
     <!-- <div class="mt-1 justify-self-end">
-      <Bonfire.UI.Common.LikeActionWithoutLabelLive  
-      id={ComponentID.new(Bonfire.UI.Common.LikeActionWithoutLabelLive, ulid(@intent))} 
+      <Bonfire.UI.Common.LikeActionLive  
+      id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, ulid(@intent))} 
       object={@intent}
        
       />
