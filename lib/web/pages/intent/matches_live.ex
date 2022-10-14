@@ -4,7 +4,7 @@ defmodule Bonfire.Breadpub.MatchesLive do
   prop hits, :list, default: []
 
   def render(assigns) do
-    if module_enabled?(Bonfire.Search.Web.ResultsLive) do
+    if module_enabled?(Bonfire.Search.Web.ResultsLive, assigns) do
       ~F"""
       <Bonfire.Search.Web.ResultsLive search_limit="10" show_more_link={false} />
       """
