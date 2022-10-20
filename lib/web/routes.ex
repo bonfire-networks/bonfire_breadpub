@@ -1,4 +1,6 @@
 defmodule Bonfire.Breadpub.Web.Routes do
+  def declare_routes, do: "breadpub"
+
   defmacro __using__(_) do
     quote do
       # pages anyone can view
