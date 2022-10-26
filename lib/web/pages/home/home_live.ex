@@ -42,7 +42,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   end
 
   def do_handle_params(%{"tab" => "publish" = tab} = _params, _url, socket) do
-    current_user = current_user_required(socket)
+    current_user = current_user_required!(socket)
 
     {:noreply,
      assign(socket,
@@ -64,7 +64,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   end
 
   def do_handle_params(%{"tab" => "my-needs" = tab} = _params, _url, socket) do
-    current_user = current_user_required(socket)
+    current_user = current_user_required!(socket)
     intents = intents(%{receiver: "me"}, socket)
 
     # debug(intents)
@@ -77,7 +77,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   end
 
   def do_handle_params(%{"tab" => "my-offers" = tab} = _params, _url, socket) do
-    current_user = current_user_required(socket)
+    current_user = current_user_required!(socket)
     intents = intents(%{provider: "me"}, socket)
     # debug(intents)
     {:noreply,
@@ -88,7 +88,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   end
 
   def do_handle_params(%{"tab" => "bookmarked" = tab} = _params, _url, socket) do
-    current_user = current_user_required(socket)
+    current_user = current_user_required!(socket)
 
     # TODO
 
