@@ -15,7 +15,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
 
   prop selected_tab, :string, default: "publish"
 
-  # declare_extension("BreadPub", icon: "noto:baguette-bread")
+  declare_extension("BreadPub", icon: "noto:baguette-bread")
 
   def mount(params, session, socket) do
     live_plug(params, session, socket, [
