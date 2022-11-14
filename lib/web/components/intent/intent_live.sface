@@ -11,7 +11,7 @@
     {/if}
 
     <div class="flex-auto">
-      <LiveRedirect to={"/breadpub/intent/#{ulid(@intent)}"}>
+      <LiveRedirect to={~p"/breadpub/intent/#{ulid(@intent)}"}>
         <h3 class="text-base leading-snug text-base-content hover:underline font-regular">{@name}</h3>
       </LiveRedirect>
     </div>
