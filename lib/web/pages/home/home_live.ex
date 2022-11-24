@@ -114,15 +114,15 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
      )}
   end
 
-  def handle_params(params, uri, socket) do
-    # poor man's hook I guess
-    with {_, socket} <-
-           Bonfire.UI.Common.LiveHandlers.handle_params(params, uri, socket) do
-      undead_params(socket, fn ->
-        do_handle_params(params, uri, socket)
-      end)
-    end
-  end
+  def handle_params(params, uri, socket),
+    do:
+      Bonfire.UI.Common.LiveHandlers.handle_params(
+        params,
+        uri,
+        socket,
+        __MODULE__,
+        &do_handle_params/3
+      )
 
   # TODO: filer only for breadpub offers/needs?
   # classified_as: "#{Bonfire.Breadpub.Integration.remote_tag_id}"
@@ -156,21 +156,26 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   """
   def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
 
-  def handle_event("toggle_intent_type", %{"id" => id}, socket) do
+  def do_handle_event("toggle_intent_type", %{"id" => id}, socket) do
     debug(id)
     {:noreply, assign(socket, intent_type: id)}
   end
 
   # defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
 
-  def handle_event(action, attrs, socket),
-    do:
-      Bonfire.UI.Common.LiveHandlers.handle_event(
+  def handle_event(
         action,
         attrs,
-        socket,
-        __MODULE__
-      )
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__,
+          &do_handle_event/3
+        )
 
   def handle_info(info, socket),
     do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)

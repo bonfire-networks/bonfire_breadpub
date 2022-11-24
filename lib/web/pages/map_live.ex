@@ -59,9 +59,23 @@ defmodule Bonfire.Breadpub.MapLive do
   end
 
   # proxy relevent events to the map component
-  def handle_event("map_" <> _action = event, params, socket) do
+  def do_handle_event("map_" <> _action = event, params, socket) do
     debug(proxy_event: event)
     debug(proxy_params: params)
     Bonfire.Geolocate.MapLive.handle_event(event, params, socket, true)
   end
+
+  def handle_event(
+        action,
+        attrs,
+        socket
+      ),
+      do:
+        Bonfire.UI.Common.LiveHandlers.handle_event(
+          action,
+          attrs,
+          socket,
+          __MODULE__,
+          &do_handle_event/3
+        )
 end
