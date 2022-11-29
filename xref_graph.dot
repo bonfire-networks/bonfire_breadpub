@@ -1,0 +1,28 @@
+digraph "xref graph" {
+  "lib/integration.ex"
+  "lib/web/components/bookmarked/bookmarked_live.ex"
+  "lib/web/components/create_intent/create_intent_live.ex"
+  "lib/web/components/create_intent/create_intent_live.ex" -> "lib/integration.ex"
+  "lib/web/components/discover/discover_live.ex"
+  "lib/web/components/discover/discover_live.ex" -> "lib/web/components/intent/intent_live.ex" [label="(export)"]
+  "lib/web/components/intent/intent_live.ex"
+  "lib/web/components/my_needs/my_needs_live.ex"
+  "lib/web/components/my_needs/my_needs_live.ex" -> "lib/web/components/intent/intent_live.ex" [label="(export)"]
+  "lib/web/components/my_offers/my_offers_live.ex"
+  "lib/web/components/my_offers/my_offers_live.ex" -> "lib/web/components/intent/intent_live.ex" [label="(export)"]
+  "lib/web/components/nav/main_navigation/main_navigation_live.ex"
+  "lib/web/components/nav/sidebar_deprecated/sidebar_live.ex"
+  "lib/web/components/nav/sidebar_deprecated/sidebar_live.ex" -> "lib/web/pages/map_live.ex"
+  "lib/web/pages/home/home_live.ex"
+  "lib/web/pages/home/home_live.ex" -> "lib/web/components/bookmarked/bookmarked_live.ex" [label="(export)"]
+  "lib/web/pages/home/home_live.ex" -> "lib/web/components/create_intent/create_intent_live.ex" [label="(export)"]
+  "lib/web/pages/home/home_live.ex" -> "lib/web/components/discover/discover_live.ex" [label="(export)"]
+  "lib/web/pages/home/home_live.ex" -> "lib/web/components/my_needs/my_needs_live.ex" [label="(export)"]
+  "lib/web/pages/home/home_live.ex" -> "lib/web/components/my_offers/my_offers_live.ex" [label="(export)"]
+  "lib/web/pages/home/home_live.ex" -> "lib/web/components/nav/main_navigation/main_navigation_live.ex" [label="(export)"]
+  "lib/web/pages/intent/intent_live.ex"
+  "lib/web/pages/intent/intent_live.ex" -> "lib/web/pages/intent/matches_live.ex" [label="(export)"]
+  "lib/web/pages/intent/matches_live.ex"
+  "lib/web/pages/map_live.ex"
+  "lib/web/routes.ex"
+}
