@@ -42,8 +42,8 @@
           {/if}
           <div class="mt-1">
             <Bonfire.UI.Common.LikeActionLive
-              id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, @intent)}
-              object={@intent}
+              id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, ulid(@intent))}
+              object_id={ulid(@intent)}
             />
           </div>
         </div>

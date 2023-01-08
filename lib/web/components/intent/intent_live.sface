@@ -19,7 +19,7 @@
     <!-- <div class="mt-1 justify-self-end">
       <Bonfire.UI.Common.LikeActionLive  
       id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, ulid(@intent))} 
-      object={@intent}
+      object_id={ulid(@intent)}
        
       />
     </div> -->
@@ -68,12 +68,12 @@
       object_id={e(@intent, :id, "no-object")}
     />
     <Bonfire.UI.Common.BoostActionLive
-      id={ComponentID.new(Bonfire.UI.Common.BoostActionLive, e(@intent, :id, ""))}
-      object={@intent}
+      id={ComponentID.new(Bonfire.UI.Common.BoostActionLive, e(@intent, :id, nil))}
+      object_id={e(@intent, :id, nil)}
     />
     <Bonfire.UI.Common.LikeActionLive
-      id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, e(@intent, :id, ""))}
-      object={@intent}
+      id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, e(@intent, :id, nil))}
+      object_id={e(@intent, :id, nil)}
       label={l("Bookmark")}
     />
   </div>
