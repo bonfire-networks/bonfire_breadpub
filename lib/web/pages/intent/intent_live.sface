@@ -26,7 +26,7 @@
                 </LiveRedirect>
               {/if}
             </div>
-            <span class="ml-1 text-xs tracking-wide text-base-content opacity-60 font-regular">- {date_from_now(@intent)}</span>
+            <span class="ml-1 text-xs tracking-wide text-base-content opacity-60 font-regular">- {DatesTimes.date_from_now(@intent)}</span>
           </div>
           <div class="prose-sm prose text-base-content opacity-60">{e(@intent, :note, nil)}</div>
         </div>

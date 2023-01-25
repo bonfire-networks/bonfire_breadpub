@@ -54,7 +54,7 @@
             clip-rule="evenodd"
           />
         </svg>
-        <span>{date_from_now(@intent)}</span>
+        <span>{DatesTimes.date_from_now(@intent)}</span>
       </div>
     </div>
   </div>
