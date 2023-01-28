@@ -31,8 +31,12 @@
   >
     <HiddenInput :if={@intent_url} name="redirect_after" value={@intent_url} />
     <HiddenInput :if={@action_id} name="action_id" value={@action_id} />
-    <HiddenInput :if={@intent_type == "need"} name="receiver" value={ulid(@current_user)} />
-    <HiddenInput :if={@intent_type == "offer"} name="provider" value={ulid(@current_user)} />
+    <HiddenInput :if={@intent_type == "need"} name="receiver" value={current_user_id(@__context__)} />
+    <HiddenInput
+      :if={@intent_type == "offer"}
+      name="provider"
+      value={current_user_id(@__context__)}
+    />
     <HiddenInput name="classified_as[]" value={Bonfire.Breadpub.Integration.remote_tag_id()} />
 
     <!-- Create a title input form field -->
