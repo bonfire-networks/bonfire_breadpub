@@ -9,7 +9,6 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   alias Bonfire.UI.ValueFlows.CreateMilestoneLive
   alias Bonfire.UI.ValueFlows.FiltersLive
 
-  alias Bonfire.UI.Me.LivePlugs
   alias Bonfire.Me.Users
   alias Bonfire.UI.Me.CreateUserLive
 
@@ -17,18 +16,9 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
 
   declare_extension("BreadPub", icon: "noto:baguette-bread")
 
-  def mount(params, session, socket) do
-    live_plug(params, session, socket, [
-      LivePlugs.LoadCurrentAccount,
-      LivePlugs.LoadCurrentUser,
-      Bonfire.UI.Common.LivePlugs.StaticChanged,
-      Bonfire.UI.Common.LivePlugs.Csrf,
-      Bonfire.UI.Common.LivePlugs.Locale,
-      &mounted/3
-    ])
-  end
+  on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
-  defp mounted(params, session, socket) do
+  def mount(params, session, socket) do
     {:ok,
      assign(
        socket,
