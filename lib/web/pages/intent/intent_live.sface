@@ -55,8 +55,8 @@
       </div>
       <div class="mt-6 -m-3">
         <Bonfire.UI.Social.ThreadLive
-          id={e(@intent, :id, "")}
-          thread_id={e(@intent, :id, "")}
+          id={id(@intent)}
+          thread_id={id(@intent)}
           smart_input_opts={%{
             prompt: l("Post a comment..."),
             text:
