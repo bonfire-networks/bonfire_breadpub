@@ -14,7 +14,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
 
   prop selected_tab, :string, default: "publish"
 
-  declare_extension("BreadPub", icon: "noto:baguette-bread")
+  declare_extension("BreadPub", icon: "noto:baguette-bread", emoji: "🥖")
 
   on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
@@ -23,6 +23,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
      assign(
        socket,
        page_title: "Create a new intent",
+       selected_tab: nil,
        page: "publish",
        action_id: "work",
        intent_type: "need",
