@@ -16,13 +16,13 @@
       </LiveRedirect>
     </div>
 
-    <!-- <div class="mt-1 justify-self-end">
+    {!-- <div class="mt-1 justify-self-end">
       <Bonfire.UI.Common.LikeActionLive  
       id={ComponentID.new(Bonfire.UI.Common.LikeActionLive, id(@intent), __MODULE__)} 
       object_id={ulid(@intent)}
        
       />
-    </div> -->
+    </div> --}
 
     <div class="flex items-center space-x-2">
       {#if e(@intent, :provider, nil)}
