@@ -1,6 +1,6 @@
 <div class="container h-screen max-w-screen-lg mx-auto">
   <.live_component
-    module={Bonfire.Geolocate.MapLive}
+    module={maybe_component(Bonfire.Geolocate.MapLive)}
     id={:VFMap}
     markers={@markers}
     points={@points}
