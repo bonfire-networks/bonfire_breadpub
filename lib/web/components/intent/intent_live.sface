@@ -17,8 +17,9 @@
     </div>
 
     {!-- <div class="mt-1 justify-self-end">
-      <Bonfire.UI.Social.LikeActionLive  
-      id={ComponentID.new(Bonfire.UI.Social.LikeActionLive, id(@intent), __MODULE__)} 
+      <StatefulComponent
+          module={maybe_component(Bonfire.UI.Reactions.LikeActionLive, @__context__)}
+      id={ComponentID.new(Bonfire.UI.Reactions.LikeActionLive, id(@intent), __MODULE__)} 
       object_id={ulid(@intent)}
        
       />
@@ -67,12 +68,14 @@
       permalink={path(@intent)}
       object_id={e(@intent, :id, "no-object")}
     />
-    <Bonfire.UI.Social.BoostActionLive
-      id={ComponentID.new(Bonfire.UI.Social.BoostActionLive, id(@intent), __MODULE__)}
+    <StatefulComponent
+      module={maybe_component(Bonfire.UI.Reactions.BoostActionLive, @__context__)}
+      id={ComponentID.new(Bonfire.UI.Reactions.BoostActionLive, id(@intent), __MODULE__)}
       object_id={e(@intent, :id, nil)}
     />
-    <Bonfire.UI.Social.LikeActionLive
-      id={ComponentID.new(Bonfire.UI.Social.LikeActionLive, id(@intent), __MODULE__)}
+    <StatefulComponent
+      module={maybe_component(Bonfire.UI.Reactions.LikeActionLive, @__context__)}
+      id={ComponentID.new(Bonfire.UI.Reactions.LikeActionLive, id(@intent), __MODULE__)}
       object_id={e(@intent, :id, nil)}
       label={l("Bookmark")}
     />

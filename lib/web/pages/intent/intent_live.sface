@@ -41,8 +41,9 @@
             </span>
           {/if}
           <div class="mt-1">
-            <Bonfire.UI.Social.LikeActionLive
-              id={ComponentID.new(Bonfire.UI.Social.LikeActionLive, ulid(@intent), __MODULE__)}
+            <StatefulComponent
+              module={maybe_component(Bonfire.UI.Reactions.LikeActionLive, @__context__)}
+              id={ComponentID.new(Bonfire.UI.Reactions.LikeActionLive, ulid(@intent), __MODULE__)}
               object_id={ulid(@intent)}
             />
           </div>
