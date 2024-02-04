@@ -12,7 +12,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   alias Bonfire.Me.Users
   alias Bonfire.UI.Me.CreateUserLive
 
-  prop selected_tab, :string, default: "publish"
+  prop selected_tab, :any, default: "publish"
 
   declare_extension("BreadPub", icon: "noto:baguette-bread", emoji: "🥖")
 
