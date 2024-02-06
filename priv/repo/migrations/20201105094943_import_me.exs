@@ -1,4 +1,4 @@
-defmodule Bonfire.Breadpub.Repo.Migrations.ImportMe  do
+defmodule Bonfire.Breadpub.Repo.Migrations.ImportMe do
   @moduledoc false
   use Ecto.Migration
 
