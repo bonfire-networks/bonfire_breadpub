@@ -11,19 +11,19 @@
             <div class="flex items-center my-2 space-x-2">
               <span class="w-4 h-4  rounded-full" />
               {#if e(@intent, :provider, nil) != nil}
-                <LiveRedirect
+                <LinkLive
                   class="text-xs tracking-wide text-base-content opacity-60 hover:underline font-regular"
                   to={path(e(@intent, :provider, nil))}
                 >
                   {e(@intent, :provider, :name, nil)}
-                </LiveRedirect>
+                </LinkLive>
               {#else}
-                <LiveRedirect
+                <LinkLive
                   class="text-xs tracking-wide text-base-content opacity-60 hover:underline font-regular"
                   to={path(e(@intent, :receiver, nil))}
                 >
                   {e(@intent, :receiver, :name, nil)}
-                </LiveRedirect>
+                </LinkLive>
               {/if}
             </div>
             <span class="ml-1 text-xs tracking-wide text-base-content opacity-60 font-regular">- {DatesTimes.date_from_now(@intent)}</span>
