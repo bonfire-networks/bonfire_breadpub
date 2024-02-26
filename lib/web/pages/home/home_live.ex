@@ -32,7 +32,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => "publish" = tab} = _params, _url, socket) do
+  def handle_params(%{"tab" => "publish" = tab} = _params, _url, socket) do
     current_user = current_user_required!(socket)
 
     {:noreply,
@@ -41,7 +41,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => "discover" = tab} = _params, _url, socket) do
+  def handle_params(%{"tab" => "discover" = tab} = _params, _url, socket) do
     current_user = current_user(socket.assigns)
     intents = intents(socket)
 
@@ -54,7 +54,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => "my-needs" = tab} = _params, _url, socket) do
+  def handle_params(%{"tab" => "my-needs" = tab} = _params, _url, socket) do
     current_user = current_user_required!(socket)
     intents = intents(%{receiver: "me"}, socket)
 
@@ -67,7 +67,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => "my-offers" = tab} = _params, _url, socket) do
+  def handle_params(%{"tab" => "my-offers" = tab} = _params, _url, socket) do
     current_user = current_user_required!(socket)
     intents = intents(%{provider: "me"}, socket)
     # debug(intents)
@@ -78,7 +78,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => "bookmarked" = tab} = _params, _url, socket) do
+  def handle_params(%{"tab" => "bookmarked" = tab} = _params, _url, socket) do
     current_user = current_user_required!(socket)
 
     # TODO
@@ -89,14 +89,14 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
      )}
   end
 
-  def do_handle_params(%{"tab" => tab} = _params, _url, socket) do
+  def handle_params(%{"tab" => tab} = _params, _url, socket) do
     {:noreply,
      assign(socket,
        selected_tab: tab
      )}
   end
 
-  def do_handle_params(%{} = _params, _url, socket) do
+  def handle_params(%{} = _params, _url, socket) do
     # current_user = current_user(socket.assigns)
 
     {:noreply,
@@ -104,16 +104,6 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
        selected_tab: "publish"
      )}
   end
-
-  def handle_params(params, uri, socket),
-    do:
-      Bonfire.UI.Common.LiveHandlers.handle_params(
-        params,
-        uri,
-        socket,
-        __MODULE__,
-        &do_handle_params/3
-      )
 
   # TODO: filer only for breadpub offers/needs?
   # classified_as: "#{Bonfire.Breadpub.Integration.remote_tag_id}"
@@ -147,27 +137,8 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   """
   def intents(params \\ %{}, socket), do: liveql(socket, :intents, params)
 
-  def do_handle_event("toggle_intent_type", %{"id" => id}, socket) do
+  def handle_event("toggle_intent_type", %{"id" => id}, socket) do
     debug(id)
     {:noreply, assign(socket, intent_type: id)}
   end
-
-  # defdelegate handle_params(params, attrs, socket), to: Bonfire.UI.Common.LiveHandlers
-
-  def handle_event(
-        action,
-        attrs,
-        socket
-      ),
-      do:
-        Bonfire.UI.Common.LiveHandlers.handle_event(
-          action,
-          attrs,
-          socket,
-          __MODULE__,
-          &do_handle_event/3
-        )
-
-  def handle_info(info, socket),
-    do: Bonfire.UI.Common.LiveHandlers.handle_info(info, socket, __MODULE__)
 end
