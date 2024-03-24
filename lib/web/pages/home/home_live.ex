@@ -14,7 +14,12 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
 
   prop selected_tab, :any, default: "publish"
 
-  declare_extension("BreadPub", icon: "noto:baguette-bread", emoji: "🥖")
+  declare_extension("BreadPub",
+    icon: "noto:baguette-bread",
+    emoji: "🥖",
+    description:
+      l("Tools for co-operative production, distribution, and exchange of economic resources.")
+  )
 
   on_mount {LivePlugs, [Bonfire.UI.Me.LivePlugs.LoadCurrentUser]}
 
