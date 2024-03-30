@@ -4,13 +4,12 @@ defmodule Bonfire.Breadpub.MatchesLive do
   prop hits, :list, default: []
 
   def render(assigns) do
-    if module_enabled?(Bonfire.Search.Web.ResultsLive, assigns) do
-      ~F"""
-      <Bonfire.Search.Web.ResultsLive search_limit="10" show_more_link={false} />
-      """
-    else
-      ~F"""
-      """
-    end
+    ~F"""
+    <StatelessComponent
+      module={maybe_component(Bonfire.Search.Web.ResultsLive, @__context__)}
+      search_limit="10" 
+      show_more_link={false} 
+    />
+    """
   end
 end
