@@ -7,8 +7,8 @@ defmodule Bonfire.Breadpub.MatchesLive do
     ~F"""
     <StatelessComponent
       module={maybe_component(Bonfire.Search.Web.ResultsLive, @__context__)}
-      search_limit="10" 
-      show_more_link={false} 
+      search_limit="10"
+      show_more_link={false}
     />
     """
   end
