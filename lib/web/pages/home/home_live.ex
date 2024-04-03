@@ -15,7 +15,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   prop selected_tab, :any, default: "publish"
 
   declare_extension("BreadPub",
-    icon: "noto:baguette-bread",
+    icon: "mdi:baguette",
     emoji: "🥖",
     description:
       l("Tools for co-operative production, distribution, and exchange of economic resources.")
