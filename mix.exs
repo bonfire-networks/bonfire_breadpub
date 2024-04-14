@@ -31,7 +31,7 @@ defmodule Bonfire.Breadpub.MixProject do
           {:absinthe, "~> 1.7.0", optional: true},
           {:absinthe_plug, "~> 1.5", optional: true},
           {:bonfire_search,
-           git: "https://github.com/bonfire-networks/bonfire_search#main",
+           git: "https://github.com/bonfire-networks/bonfire_search",
            optional: true, runtime: false}
         ])
     ]
