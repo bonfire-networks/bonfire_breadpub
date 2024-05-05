@@ -6,5 +6,5 @@ defmodule Bonfire.Breadpub.Test.FakeHelpers do
 
   import ExUnit.Assertions
 
-  import Bonfire.Breadpub.Integration
+  import Bonfire.Breadpub
 end

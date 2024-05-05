@@ -38,7 +38,7 @@ defmodule Bonfire.Breadpub.ConnCase do
   end
 
   setup tags do
-    import Bonfire.Breadpub.Integration
+    import Bonfire.Breadpub
 
     Bonfire.Common.Test.Interactive.setup_test_repo(tags)
 

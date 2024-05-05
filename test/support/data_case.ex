@@ -15,7 +15,7 @@ defmodule Bonfire.Breadpub.DataCase do
   """
 
   use ExUnit.CaseTemplate
-  import Bonfire.Breadpub.Integration
+  import Bonfire.Breadpub
 
   using do
     quote do

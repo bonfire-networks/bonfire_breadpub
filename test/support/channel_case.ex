@@ -17,7 +17,7 @@ defmodule Bonfire.Breadpub.ChannelCase do
 
   use ExUnit.CaseTemplate
 
-  import Bonfire.Breadpub.Integration
+  import Bonfire.Breadpub
 
   using do
     quote do

@@ -37,7 +37,7 @@
       name="provider"
       value={current_user_id(@__context__)}
     />
-    <HiddenInput name="classified_as[]" value={Bonfire.Breadpub.Integration.remote_tag_id()} />
+    <HiddenInput name="classified_as[]" value={Bonfire.Breadpub.remote_tag_id()} />
 
     {!-- Create a title input form field --}
     <Field class="w-full p-2 m-0 rounded-lg shadow-inner bg-base-300" name={:name}>

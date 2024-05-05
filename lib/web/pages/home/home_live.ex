@@ -111,7 +111,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   end
 
   # TODO: filer only for breadpub offers/needs?
-  # classified_as: "#{Bonfire.Breadpub.Integration.remote_tag_id}"
+  # classified_as: "#{Bonfire.Breadpub.remote_tag_id}"
 
   @graphql """
   query($provider: ID, $receiver: ID) {
