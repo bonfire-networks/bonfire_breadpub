@@ -43,8 +43,8 @@
           <div class="mt-1">
             <StatefulComponent
               module={maybe_component(Bonfire.UI.Reactions.LikeActionLive, @__context__)}
-              id={ComponentID.new(Bonfire.UI.Reactions.LikeActionLive, ulid(@intent), __MODULE__)}
-              object_id={ulid(@intent)}
+              id={ComponentID.new(Bonfire.UI.Reactions.LikeActionLive, uid(@intent), __MODULE__)}
+              object_id={uid(@intent)}
             />
           </div>
         </div>

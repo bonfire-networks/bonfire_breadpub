@@ -11,7 +11,7 @@
     {/if}
 
     <div class="flex-auto">
-      <LinkLive to={~p"/breadpub/intent/#{ulid(@intent)}"}>
+      <LinkLive to={~p"/breadpub/intent/#{uid(@intent)}"}>
         <h3 class="text-base leading-snug text-base-content hover:underline font-regular">{@name}</h3>
       </LinkLive>
     </div>
@@ -20,7 +20,7 @@
       <StatefulComponent
           module={maybe_component(Bonfire.UI.Reactions.LikeActionLive, @__context__)}
       id={ComponentID.new(Bonfire.UI.Reactions.LikeActionLive, id(@intent), __MODULE__)} 
-      object_id={ulid(@intent)}
+      object_id={uid(@intent)}
        
       />
     </div> --}
