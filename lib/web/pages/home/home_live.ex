@@ -47,7 +47,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   end
 
   def handle_params(%{"tab" => "discover" = tab} = _params, _url, socket) do
-    current_user = current_user(socket.assigns)
+    current_user = current_user(assigns(socket))
     intents = intents(socket)
 
     # debug(intents)
@@ -102,7 +102,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
   end
 
   def handle_params(%{} = _params, _url, socket) do
-    # current_user = current_user(socket.assigns)
+    # current_user = current_user(assigns(socket))
 
     {:noreply,
      assign(socket,
