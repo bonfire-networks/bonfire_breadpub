@@ -23,6 +23,8 @@ defmodule Bonfire.Breadpub.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       # import Bonfire.Breadpub.DataCase
+
+      @moduletag :backend
     end
   end
 
