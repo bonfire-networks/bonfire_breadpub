@@ -1,4 +1,4 @@
 defmodule Bonfire.UI.Breadpub.MyOffersLive do
   use Bonfire.UI.Common.Web, :stateless_component
-  prop intents, :any
+  prop intents, :any, default: []
 end

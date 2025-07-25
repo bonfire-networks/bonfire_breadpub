@@ -33,7 +33,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
        action_id: "work",
        intent_type: "need",
        intent_url: "/breadpub/intent/",
-       without_sidebar: true
+       nav_items: Bonfire.Common.ExtensionModule.default_nav()
      )}
   end
 

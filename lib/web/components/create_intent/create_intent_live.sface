@@ -1,5 +1,5 @@
-<section class="w-full p-4 shadow bg-base-100 rounded-box">
-  <div class="grid h-12 grid-cols-2 gap-1 p-1 m-2 rounded-lg shadow-inner w-80 bg-base-300">
+<section class="w-full p-4">
+  <div class="grid h-10 grid-cols-2 gap-1 p-1 m-2 rounded-lg shadow-inner w-60 bg-base-300">
     <div
       phx-value-id="need"
       phx-click="toggle_intent_type"
@@ -42,11 +42,11 @@
     {!-- Create a title input form field --}
     <Field class="w-full p-2 m-0 rounded-lg shadow-inner bg-base-300" name={:name}>
       <Label class="block text-sm text-base-content text-opacity-80 font-regular">{l("Add a title")}</Label>
-      <TextInput class="block w-full rounded-box text-base-content border-base-300 bg-base-300 focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm" />
+      <TextInput class="input w-full" />
     </Field>
     <Field name={:note} class="w-full p-2 rounded-lg shadow-inner bg-base-300">
       <Label class="block text-sm text-base-content text-opacity-80 font-regular">{l("Write an optional description")}</Label>
-      <TextArea class="block w-full text-base-content border-base-300 bg-base-300 rounded-box focus:ring-secondary-500 focus:border-indigo-500 sm:text-sm" />
+      <TextArea class="textarea w-full" />
     </Field>
     <button type="submit" class="w-full btn btn-primary">{l("Publish")}</button>
   </Form>
