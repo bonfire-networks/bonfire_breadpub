@@ -3,18 +3,18 @@
     <div
       phx-value-id="need"
       phx-click="toggle_intent_type"
-      class={
+      class={[
         "hover:bg-secondary-focus cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-base-content rounded-md",
         "text-secondary-content bg-secondary": @intent_type == "need"
-      }
+      ]}
     >{l("I need")}</div>
     <div
       phx-value-id="offer"
       phx-click="toggle_intent_type"
-      class={
+      class={[
         "hover:bg-secondary-focus cursor-pointer flex items-center justify-center px-4 text-sm font-medium text-center text-base-content rounded-md",
         "text-secondary-content bg-secondary": @intent_type == "offer"
-      }
+      ]}
     >{l("I can offer")}</div>
   </div>
   {!-- Create a form --}
@@ -26,7 +26,7 @@
       :changeset,
       ValueFlows.Planning.Intent.validate_changeset()
     )}
-    opts={autocomplete: "off"}
+    opts={[autocomplete: "off"]}
     submit="ValueFlows.Planning.Intent:create"
   >
     <HiddenInput :if={@intent_url} name="redirect_after" value={@intent_url} />
