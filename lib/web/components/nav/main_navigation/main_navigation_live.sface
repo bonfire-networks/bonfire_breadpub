@@ -1,21 +1,21 @@
 <div class="flex items-center w-full px-3  rounded-t-box menu bg-base-100 horizontal">
   <ul class="flex items-stretch flex-1 w-full">
-    <li class={bordered: @page == "publish"}>
+    <li class={[bordered: @page == "publish"]}>
       <LinkLive to={~p"/breadpub/publish"}>{l("Publish")}</LinkLive>
     </li>
-    <li class={bordered: @page == "discover"}>
+    <li class={[bordered: @page == "discover"]}>
       <LinkLive to={~p"/breadpub/discover"}>{l("Discover")}</LinkLive>
     </li>
-    <li class={bordered: @page == "my-needs"}>
+    <li class={[bordered: @page == "my-needs"]}>
       <LinkLive to={~p"/breadpub/my-needs"}>{l("My needs")}</LinkLive>
     </li>
-    <li class={bordered: @page == "my-offers"}>
+    <li class={[bordered: @page == "my-offers"]}>
       <LinkLive to={~p"/breadpub/my-offers"}>{l("My offers")}</LinkLive>
     </li>
-    <li class={bordered: @page == "bookmarked"}>
+    <li class={[bordered: @page == "bookmarked"]}>
       <LinkLive to={~p"/breadpub/bookmarked"}>{l("Bookmarked")}</LinkLive>
     </li>
-    <li class={bordered: @page == "settings"}>
+    <li class={[bordered: @page == "settings"]}>
       <LinkLive to={path(Bonfire.UI.ValueFlows.SettingsLive)}>{l("Settings")}</LinkLive>
     </li>
   </ul>
