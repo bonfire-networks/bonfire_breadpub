@@ -32,8 +32,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
        page: "publish",
        action_id: "work",
        intent_type: "need",
-       intent_url: "/breadpub/intent/",
-       nav_items: Bonfire.Common.ExtensionModule.default_nav()
+       intent_url: "/breadpub/intent/"
      )}
   end
 
