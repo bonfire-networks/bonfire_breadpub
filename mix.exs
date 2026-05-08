@@ -28,7 +28,7 @@ defmodule Bonfire.Breadpub.MixProject do
           {:phoenix_live_reload, "~> 1.2", only: :dev},
 
           {:floki, ">= 0.0.0", only: [:dev, :test]},
-          {:absinthe, "~> 1.7.0", optional: true},
+          {:absinthe, "~> 1.10", optional: true},
           {:absinthe_plug, "~> 1.5", optional: true},
           {:bonfire_search,
            git: "https://github.com/bonfire-networks/bonfire_search",
