@@ -14,7 +14,7 @@ defmodule Bonfire.Breadpub.Web.HomeLive do
 
   prop selected_tab, :any, default: "publish"
 
-  declare_extension("BreadPub",
+  declare_extension(l("BreadPub"),
     icon: "mdi:baguette",
     emoji: "🥖",
     description:
